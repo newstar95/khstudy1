@@ -4,7 +4,7 @@ public class Test10 {
 	public static void main(String[] args) {
 		//내 풀이
 //		int time = 60;
-//		int minute = 1;
+//		int min = 1;
 //		
 //		int yesterdayTime = 2;
 //		int yesterdayMinute = 45;
@@ -12,14 +12,15 @@ public class Test10 {
 //		int todayTime = 1;
 //		int todayMinute = 50;
 //		
-//		int yesterday = (time * yesterdayTime) + (minute * yesterdayMinute);   
-//		int today = (time * todayTime) + (minute * todayMinute); 
+//		int yesterday = (time * yesterdayTime) + (min * yesterdayMinute);   
+//		int today = (time * todayTime) + (min * todayMinute); 
 //		
 //		int total = yesterday + today;
 //		int hour = total / 60;
-//		int hour = total % 60;
+//		int minute= total % 60;
 		
-//		System.out.println(total);
+//		System.out.println(hour);
+//		System.out.println(minute);
 		
 		
 		//강사님 풀이

@@ -1,6 +1,6 @@
 package data3;
 
-public class Text06 {
+public class Test06 {
 
 	public static void main(String[] args) {
 		//두 자리 이하의 수가 주어짐

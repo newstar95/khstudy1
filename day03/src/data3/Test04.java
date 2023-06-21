@@ -14,6 +14,8 @@ public class Test04 {
 		boolean teen = 14 <= age && age <= 19;
 		
 		boolean free = 8 < age || age >= 65;
+		
+		
 		System.out.println(teen);
 		
 		//논리연산 - 논리끼리 계산하기 위한 기호

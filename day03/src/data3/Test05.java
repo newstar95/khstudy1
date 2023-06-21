@@ -3,34 +3,31 @@ package data3;
 public class Test05 {
 	
 	public static void main(String[] args) {
-		//결론
-		//= 30세 이상 && (짝수해이면서 짝수년생 || 홀수해이면서 홀수년생)
-		//= condition1 && (condition2 || condition3)
+		// 30세 이상 
+		// 이번 년도가 짝수 해라면 짝수년도 출생자가 대상 
+		// 이번 년도가 홀수 해라면 홀수년도 출생자가 대상
 		
 		//입력
-		int birth = 1985;
+		int Birth = 1985;
 		int year = 2023;
 		
-		
 		//계산
-		int age = year -  birth + 1;
-		boolean condition1 = age >= 30; // 의사코드 30세 이상인가?
+		//유저의 나이
+		int age = year - Birth + 1;
 		
-		//짝수년도 && 짝수년생인가? (이면서, 그리고는 &이다)
-		boolean condition2a = (year % 2) == 0;
-		boolean condition2b = (birth % 2) == 1;
-		boolean condition2 = condition2a && condition2b;
-	
-		//홀수년도 && 홀수년생인가?
-		boolean condition3a = (year % 2) != 0;
-		boolean condition3b = (birth % 2) != 0;
-		boolean condition3 = condition3a && condition3b; 
+		//30세 이상인지 판단
+		boolean isAge = age >= 30;
 		
-		boolean condition = condition1 && (condition2 || condition3);
+		//이번 년도가 짝수 해라면 짝수년도 출생자가 대상
+		boolean isEven = (year % 2 == 0) && (Birth % 2 == 0);
+		// 이번 년도가 홀수 해라면 홀수년도 출생자가 대상
+		boolean isOdd = (year % 2 != 0) && (Birth % 2 != 0);
 		
+		// 30세 이상 && (짝수년도 짝수해 || 홀수년도 홀수해)
+		boolean result = isAge && (isEven || isOdd);
 		
 		//출력 
-		System.out.println(condition);
+		System.out.println(result);
 		
 	}
 }

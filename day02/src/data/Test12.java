@@ -10,9 +10,13 @@ public class Test12 {
 		//김밥 구매 갯수
 		int buy = 1;
 		
-		int freeCount = buy / 2; 		
+		int freeCount = buy / 2; 		//무료 구매 갯수
+		
+		// int pay = buy - freeCount; //유료 구매 갯수
+		
 		int price = (buy - freeCount) * gimbapPrice;
-				
+		// int price = gimbapPrice * pay; 
+
 		System.out.println(freeCount);
 		System.out.println(price);
 	}

@@ -29,8 +29,8 @@ public class Test01 {
 		int b = 20;
 		int c = a+b;
 		
-		System.out.println( a + "+" + b + "=" + c);
-		System.out.printf("%d + %d = %d\n", a, b, c);
+		System.out.println( a + "+" + b + "=" + c); //자바 방식
+		System.out.printf("%d + %d = %d\n", a, b, c); //C언어 방식
 		
 		
 		

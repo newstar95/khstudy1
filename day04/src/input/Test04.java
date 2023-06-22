@@ -20,7 +20,7 @@ public class Test04 {
 		
 		//출력
 		
-		System.out.println("수업에 참여한 시간은 " + hour + "시간" + min + "분 입니다.");
+		System.out.println("수업에 참여한 시간은 " + hour + "시간" + min + "분 입니다."); 
 		
 	}
 }

@@ -32,7 +32,7 @@ public class Test04_1 {
 		
 		int hour = time / 60;
 		int minute = time % 60;
-		
+		 
 		
 		// 출력
 		System.out.println("이용 시간은 " + hour + "시간 " + minute + "분 입니다.");

@@ -22,7 +22,6 @@ public class Test02 {
 				} else {
 					System.out.println(age + "살 이므로 이벤트 대상이 아닙니다.");
 				}
-				
-			}
-	}
+		}
+}
 

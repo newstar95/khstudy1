@@ -29,5 +29,6 @@ public class Test03 {
 		System.out.println("<계산 결과>");
 		System.out.println("점수 총점: " + tot);
 		System.out.println("점수 평균: " + avg);
+		
 	}
 }

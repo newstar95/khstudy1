@@ -18,6 +18,8 @@ public class Test05 {
 		//?시간 전 - 작성한 지 1시간 이상 1일 미만
 		//?일 전 - 작성한 지 1일 이상
 		sc.close();
+		
+		
 //		String s;
 //		if (min < 10) {
 //			s = "방금 전";

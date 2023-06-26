@@ -14,6 +14,7 @@ public class Test05_1 {
 		
 		int ok = 0;
 		int nok = 0;
+		int combo = 0;
 		
 		for (int i = 1; i <= 9; i++) {
 			System.out.print(dan + "x" + i + "=");
@@ -22,10 +23,13 @@ public class Test05_1 {
 			if(dan * i == user) {
 				System.out.println("정답");
 				ok++;
+				combo++;
+				System.out.println(combo + " 콤보! ");
 			} 
 			else {
 				System.out.println("오답");
 				nok++;
+				combo = 0;
 			}
 		}
 		sc.close();

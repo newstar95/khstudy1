@@ -9,23 +9,29 @@ public class Test05 {
 		
 		System.out.print("단 입력: ");
 		int number = sc.nextInt();
-		int count1 = 0;
-		int count2 = 0;
+		int right = 0;
+		int wrong = 0;
+		int combo = 0;
 		
 		for (int i = 1; i <= 9; i++) {
 			System.out.print(number + "x" + i + "=");
 			int answer = sc.nextInt();
 			if (answer == number*i) {
-				System.out.println(answer);
 				System.out.println("정답입니다.");
-				count1++;
-			} else {
-				System.out.println(answer);
+				right++;
+				combo++;
+				System.out.println(combo + " 콤보!");
+			} 
+			else {
+				combo = 0;
 				System.out.println("오답입니다.");
-				count2++;
+				wrong++;
 			}
+			
 		}
-		System.out.println("정답개수: " + count1);
-		System.out.println("오답개수: " + count2);
+		System.out.println("정답개수: " + right);
+		System.out.println("오답개수: " + wrong);
+		sc.close();
 	}
 }
+

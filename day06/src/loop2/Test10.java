@@ -10,16 +10,14 @@ public class Test10 {
 		//1. 총 공부한 시간
 		//2. 일 평균 공부한 시간
 		//입력은 '시간'과 '분'을 따로 받으며, 출력도 '시간'과 '분'은 따로 받는다.
-		
-		int total = 0; //총 공부한 시간
-		int avg = 0; //일 평균 공부한 시간
+		int total = 0; 
+		int avg = 0; 
 		
 		int userHour = 0;
 		int userMin = 0;
 		
-		int totalHour = 0;
-		int totalMin = 0;
-		
+		int plusHour = 0;
+		int plusMin = 0;
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -29,16 +27,22 @@ public class Test10 {
 			System.out.print("공부한 시간(분): ");
 			userMin = sc.nextInt();
 			
-			totalHour += userHour;
-			totalMin += userMin;
+			plusHour += userHour;
+			plusMin += userMin;
 		}
-			int minHour = (totalHour * 60);
-			total = minHour + totalMin;
 		
-		int resultHour = total / 60;
-		int resultMin = total % 60;
-//		sc.close();
-		System.out.println("총 공부한 시간 =" + resultHour + "시간" + resultMin + "분");
-////		System.out.println("일 평균 약 =" + "시간" + "분");
+		int minHour = (plusHour * 60);
+			
+		total = minHour + plusMin; //합계
+		avg = total / 5; //평균
+			
+		int totalHour = total / 60;
+		int totaltMin = total % 60;
+		int	avgHour = avg / 60;
+		int	avgMin = avg % 60;
+			
+		sc.close();
+		System.out.println("총 공부한 시간 = " + totalHour + "시간" + totaltMin + "분");
+		System.out.println("일 평균 약 = " + avgHour + "시간" + avgMin + "분");
 	}
 }

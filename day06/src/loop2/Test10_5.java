@@ -8,8 +8,11 @@ public class Test10_5 {
 		//합계 구하기
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.print("일자 입력: ");
+		int day = sc.nextInt();
+		
 		int total = 0;
-		for(int i = 0; i < 5; i++) {
+		for(int i = 0; i < day; i++) {
 		System.out.print("공부한 시간/분: ");
 		int hour = sc.nextInt();
 		int minute = sc.nextInt();
@@ -27,7 +30,7 @@ public class Test10_5 {
 		
 		System.out.println("총 공부한 시간은 " + hour + "시간 " + minute + "분 입니다.");
 		
-		int average = total / 5;
+		int average = total / day;
 		int averageHour = average / 60;
 		int averageMinute = average % 60;
 		

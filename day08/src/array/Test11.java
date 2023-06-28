@@ -8,7 +8,7 @@ public class Test11 {
 		
 		float[] cm = new float[] {150.8f, 180.2f, 175.9f, 162.7f, 170.3f};
 		
-		int minIndex = 0;
+		int minIndex = 0; //위치(index)는 정수(int)이다.
 		
 		for( int i = 1; i < cm.length; i++) {
 			if (cm[minIndex] > cm[i]) {

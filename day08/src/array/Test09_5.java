@@ -12,7 +12,7 @@ public class Test09_5 {
 		
 		for(int i = 0; i < 1000; i++) { //숫자를 뽑는 게 1000번이니까
 			int lotto = r.nextInt(45) + 1; //로또 숫자가 1부터 45까지 있어서
-			countList[lotto-1]++;
+			countList[lotto-1]++; //카운트를 세는 배열 안에 [lotto-1]자리에 값을 1 증가하고 동시에 대입
 		}
 		
 		for (int i = 0; i < countList.length; i++) {

@@ -10,8 +10,8 @@ public class Test09_5 {
 		
 		int[] countList = new int[45]; //세어야 하는 숫자의 갯수가 45가지여서
 		
-		for(int i = 0; i < 1000; i++) {
-			int lotto = r.nextInt(45) + 1; //로또 숫자가 1부터 45여서
+		for(int i = 0; i < 1000; i++) { //숫자를 뽑는 게 1000번이니까
+			int lotto = r.nextInt(45) + 1; //로또 숫자가 1부터 45까지 있어서
 			countList[lotto-1]++;
 		}
 		

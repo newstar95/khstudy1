@@ -17,10 +17,10 @@ public class Test01_4 {
 			//선택 정렬 
 			for(int k = 0; k < data.length-1; k++) {
 					int minIndex = k; //k번 위치의 값이 가장 작다고 생각
-			for(int i = k+1; i < data.length; i++) { //뒤에 있는 데이터와 비교하여 
-				if(data[minIndex] > data[i]) {//더 작은 값이 있다면
-					minIndex = i;//교체!
-				}
+					for(int i = k+1; i < data.length; i++) { //뒤에 있는 데이터와 비교하여 
+						if(data[minIndex] > data[i]) {//더 작은 값이 있다면
+							minIndex = i;//교체!
+						}
 			}
 			
 			//테스트 출력

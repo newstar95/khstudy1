@@ -26,8 +26,8 @@ public class Test06 {
 			//데이터 초기화
 			for (int i = 1; i <=  size*size; i++) {
 				
-				int x = r.nextInt(5);
-				int y = r.nextInt(5);
+				int x = r.nextInt(size);
+				int y = r.nextInt(size);
 				if(bingo[x][y] == 0) {
 				bingo[x][y] = i;
 				} else {
@@ -36,7 +36,7 @@ public class Test06 {
 			}
 			
 			//출력
-			for(int i = 0; i < bingo.length; i++) {
+			for(int i = 0; i < bingo.length; i++) { //크기가 정해져있다면 length가 아닌 size를 써도 된다.
 				for(int k = 0; k < bingo[i].length; k++) {
 					System.out.print(bingo[i][k]);
 					System.out.print("\t");

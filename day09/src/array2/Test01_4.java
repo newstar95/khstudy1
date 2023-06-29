@@ -14,30 +14,29 @@ public class Test01_4 {
 			//데이터 준비
 			int[] data = new int[] {30, 50, 20, 10, 40};
 			
-			//선택 정렬 
-			for(int k = 0; k < data.length-1; k++) {
-					int minIndex = k; //k번 위치의 값이 가장 작다고 생각
-					for(int i = k+1; i < data.length; i++) { //뒤에 있는 데이터와 비교하여 
-						if(data[minIndex] > data[i]) {//더 작은 값이 있다면
-							minIndex = i;//교체!
-						}
+			//선택 정렬 - 3회차(+0부터 +4지점에서 최소값을 찾아 +0지점과 교체
+			int minIndex = 2; //1번 위치의 값이 가장 작다고 생각
+			for(int i = 3; i <= 4; i++) { //뒤에 있는 데이터와 비교하여 
+				if(data[minIndex] > data[i]) {//더 작은 값이 있다면
+					minIndex = i;//교체!
+				}
 			}
 			
 			//테스트 출력
-//			System.out.println("최소값: " + data); 
-//			System.out.println("최소값: " + data[minIndex]);
+			System.out.println("최소값: " + data); 
+			System.out.println("최소값: " + data[minIndex]);
 			
 				int backup = data[minIndex];
-				data[minIndex] = data[k];
-				data[k] = backup;
-			}
+				data[minIndex] = data[2];
+				data[2] = backup;
+				
 			
-			System.out.println("정렬" );
-			//출력
-			for ( int i = 0; i < data.length; i++) {
-				System.out.print(data[i]);
-				System.out.print("\t");
-			}
+//			System.out.println("정렬: " );
+//			//출력
+//			for ( int i = 0; i < data.length; i++) {
+//				System.out.print(data[i]);
+//				System.out.print("\t");
+//			}
 		
 	}
 

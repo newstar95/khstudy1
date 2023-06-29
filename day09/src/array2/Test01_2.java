@@ -1,6 +1,6 @@
 package array2;
 
-public class Test01 {
+public class Test01_2 {
 
 	public static void main(String[] args) {
 		//정렬(sort)
@@ -14,29 +14,28 @@ public class Test01 {
 			//데이터 준비
 			int[] data = new int[] {30, 50, 20, 10, 40};
 			
-			//최소값 찾기
-			int minIndex = 0;
-			
-			for (int i = 1; i < data.length; i++) {
-				if (data[minIndex] > data[i]) {
-					minIndex = i;
+			//선택 정렬 - 1회차(+0부터 +4지점에서 최소값을 찾아 +0지점과 교체
+			int minIndex = 0; //0번 위치가 작다고 생각
+			for(int i = 1; i <= 4; i++) { //뒤에 있는 데이터와 비교하여 
+				if(data[minIndex] > data[i]) {//더 작은 값이 있다면
+					minIndex = i;//교체!
 				}
-				
 			}
+			//테스트 출력
+			System.out.println("최소값: " + data); 
 			System.out.println("최소값: " + data[minIndex]);
 			
-			for (int i = 0; i < data.length; i++) {
-				int temp = data[0];
-				data[0] = data[minIndex];
-				data[minIndex] = temp;
-			}
-			System.out.println("정렬 1번만 한 것" );
-			//출력
-			for ( int i = 0; i < data.length; i++) {
-				System.out.println(data[i]);
-			}
-			
-			
+				int backup = data[minIndex];
+				data[minIndex] = data[0];
+				data[0] = backup;
+			 
+				
+//			System.out.println("정렬: " );
+//			//출력
+//			for ( int i = 0; i < data.length; i++) {
+//				System.out.print(data[i]);
+//				System.out.print("\t");
+//			}
 		
 	}
 

@@ -1,6 +1,6 @@
 package array2;
 
-public class Test01 {
+public class Test01_1 {
 
 	public static void main(String[] args) {
 		//정렬(sort)
@@ -20,23 +20,25 @@ public class Test01 {
 			for (int i = 1; i < data.length; i++) {
 				if (data[minIndex] > data[i]) {
 					minIndex = i;
+					i++;
+					
 				}
-				
 			}
+			
 			System.out.println("최소값: " + data[minIndex]);
 			
 			for (int i = 0; i < data.length; i++) {
-				int temp = data[0];
-				data[0] = data[minIndex];
+				int temp = data[i];
+				data[i] = data[minIndex];
 				data[minIndex] = temp;
+				
 			}
-			System.out.println("정렬 1번만 한 것" );
+			
+			System.out.println("정렬: " );
 			//출력
 			for ( int i = 0; i < data.length; i++) {
 				System.out.println(data[i]);
 			}
-			
-			
 		
 	}
 

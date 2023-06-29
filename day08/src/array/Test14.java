@@ -14,7 +14,7 @@ public class Test14 {
 		int[] data = new int[] {30, 50, 20, 10, 40};
 		
 		Random r = new Random();
-		int ranIndex = r.nextInt(5);
+		int ranIndex = r.nextInt(5); //5가 아니라 data의 길이로
 		
 		for (int i = 0; i < data.length; i++) {
 			int temp = data[i];

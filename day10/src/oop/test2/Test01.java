@@ -3,12 +3,15 @@ package oop.test2;
 public class Test01 {
 
 	public static void main(String[] args) {
-
+		//Pokemon의 객체(인스턴스)를 생성
+		
+		//생성
 		Pokemon e = new Pokemon();
 		Pokemon f = new Pokemon();
 		Pokemon g = new Pokemon();
 		Pokemon p = new Pokemon();
 		
+		//초기화
 		e.name = "이상해씨";
 		e.number = 1;
 		e.attribute = "풀";
@@ -25,6 +28,7 @@ public class Test01 {
 		p.number = 25;
 		p.attribute = "전기";
 		
+		//출력
 		System.out.println(e.name);
 		System.out.println(e.number);
 		System.out.println(e.attribute);

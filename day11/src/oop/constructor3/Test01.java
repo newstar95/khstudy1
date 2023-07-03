@@ -6,12 +6,10 @@ public class Test01 {
 		Character a = new Character("헤라클레스", "전사", 50);
 		Character b = new Character("포세이돈", "마법사", 20);
 		Character c = new Character("아프로디테", "마법사", 1);
-		Character d = new Character("아프로디테", "궁수");
 		
 		a.show();
 		b.show();
 		c.show();
-		d.show();
 
 	}
 

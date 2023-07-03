@@ -42,7 +42,7 @@ public class Academy {
 		switch(type) {
 		case "온라인":
 		case "오프라인":
-		case "혼합":
+		case "혼합": 
 			this.type = type;
 		
 		}

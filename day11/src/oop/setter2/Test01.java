@@ -13,7 +13,7 @@ public class Test01 {
 		c.setup("웹 개발자 단기 완성", 120, 1200000, "오프라인");
 		
 		a.show();
-		b.show();
+		b.show(); 
 		c.show();
 		
 	}

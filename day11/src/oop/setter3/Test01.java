@@ -1,0 +1,9 @@
+package oop.setter3;
+
+public class Test01 {
+
+	public static void main(String[] args) {
+
+	}
+
+}

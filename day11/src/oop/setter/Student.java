@@ -10,7 +10,7 @@ public class Student {
 	void setup(String name, int score) {
 		this.setName(name); //내가 가진 setName 메소드에 name을 전달하며 호출하겠다.
 		this.setScore(score); //내가 가진 setScore 메소드에 score를 전달하며 호출하겠다.
-		
+		 
 	}
 
 	void show() {

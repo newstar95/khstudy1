@@ -1,0 +1,96 @@
+## 2023.07.03.Mon Day11 Project
+
+필드가 만들어져야 클래스의 나머지 형태를 구성할 수 있다.
+
+필드를 하나씩 변경할 수 있는 메소드를 구현 - Setter 메소드
+- set + 필드명으로 이름을 짓는다.
+- 설정 외에 다른 작업을 하지 않는다.
+- (중요) 올바른 데이터만 설정 가능하도록 필터링 처리를 한다.
+
+이름에 대한 Setter 메소드
+문자열은 비교를 switch로 한다.(if 방법은 나중에)
+switch case는 정수랑 문자열만 사용 가능하다.
+
+this.score 쓰면 안됨, 괄호 안에 있는 전달받은 score를 말하는 것.
+
+코드의 문제점
+[1] 잘못된 데이터 설정 가능
+[2] 하나의 정보만 바꿀 수 없다.
+- 점수를 바꾸고 싶은데 이름까지 적어야 한다.
+- 이름을 바꾸고 싶은데 점수까지 적어야 한다.
+  -변수에 직접적으로 접근하는 일은 좋지 않음(잘못된 데이터를 막을 수 없음)
+
+[1]해결법 - 데이터를 설정하는 부분에 조건을 추가하면 된다.
+[2]데이터를 하나만 설정할 수 있는 메소드를 만든다.(Setter 메소드)
+
+
+필드 개수와 세터 메소드 개수가 같아야 한다.
+세터 메소드는 셋 + 필드명으로 이름을 설정한다.
+어떠한 경우에도 세터 메소드로 연결시켜서 데이터 차단이 이루어지게 해야한다.
+
+setter 메소드 자동으로 만드는 법
+source -> generate getters and setters... 클릭
+
+setter 메소드 - 값을 설정하는 메소드(+조건)
+```
+void setName(String name) {
+		this.name = name;
+	}
+```
+
+
+getter 메소드 - 설정된 값을 반환하는 메소드
+- 이름은 get + 필드명, 반환형은 필드의 자료형과 같다.
+- 가상의 항목(존재하지 않는 필드)에 대해서 getter 메소드를 만들면 계산을 간소화할 수 있다.
+
+```
+String getName() {
+		return this.name;
+	}
+```
+
+
+
+메소드: 자판기의 버튼 하나하나라고 보면 됨(누르면 원하는 게 나오는 것)
+
+클래스는 필드에 따른 세터메소드와 게터메소드를 개수 맞춰 만들어야하고, 원래 쓰던 setup 메소드와 show 메소드도 만들어야함.
+
+
+컨트롤 + 메소드 = 해당하는 메소드로 포커스가 맞춰져서 확인 가능
+알트 + 왼쪽화살표 = 뒤로가기(원래 지점으로 이동가능)
+
+세터 메소드에는 조건을 쓰는 것
+
+
+```
+	void setKorean(int korean) {
+		if(korean >= 0 && korean <= 100)
+		this.korean = korean;
+	}
+	
+	void setEnglish(int english) { //이런 코드 추천
+		if (english < 0 || english > 100) return;
+		this.english = english;
+	}
+	
+	void setMath(int math) {
+		if (!(math >= 0 && math <= 100)) {
+			this.math = math;
+		}
+	}
+```
+
+
+```
+	int getTotal() {
+//		return this.korean + this.english + this.math;
+		return this.getKorean() + this.getEnglish() + this.getMath();
+		//밑을 추천하나 둘 다 상관 없음
+```
+
+
+세터는 조건... 들어올 때 데이터가 맞게 들어오나 조건에 맞게 검사를 해야하는 것
+게터는 나갈 때... 어떤 모습으로 내보내는지
+
+
+

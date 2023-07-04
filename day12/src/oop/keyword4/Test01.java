@@ -12,6 +12,17 @@ public class Test01 {
 		double result3 = Robot.circle(5);
 		System.out.println("원의 넓이: " + result3);
 		
+		//(주의) 참조형 데이터는 리모컨만 전달하면 외부에서 직접 제어 가능
+		int[] data = new int[] {30, 50, 20, 10, 40};
+		
+		Robot.sort(data); //리모컨 전달(call-by-reference)
+		Robot.print(data);
+		
+		Robot.reverse(data);
+		Robot.print(data);
+		
+		Robot.shuffle(data);
+		Robot.print(data);
 	}
 
 }

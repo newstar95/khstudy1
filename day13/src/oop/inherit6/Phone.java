@@ -21,7 +21,7 @@ public class Phone {
 	}
 
 	
-	public void show() {
+	public final void show() {
 		System.out.println("<휴대폰 정보>");
 		System.out.println("전화번호: " + number);
 		System.out.println("색상정보: " + color);

@@ -1,6 +1,6 @@
 package oop.inherit6;
 
-public class Galaxy23s extends Galaxy {
+public final class Galaxy23s extends Galaxy {
 	
 	public Galaxy23s(String number, String color) {
 		super(number, color);

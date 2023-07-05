@@ -1,6 +1,6 @@
 package oop.inherit6;
 
-public class GalaxyFold4 extends Galaxy {
+public final class GalaxyFold4 extends Galaxy {
 	public GalaxyFold4(String number, String color) {
 		super(number, color);
 	}

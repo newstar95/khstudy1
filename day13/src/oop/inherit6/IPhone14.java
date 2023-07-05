@@ -1,6 +1,6 @@
 package oop.inherit6;
 
-public class IPhone14 extends IPhone {
+public final class IPhone14 extends IPhone {
 	public IPhone14(String number, String color) {
 		super(number, color);
 	}

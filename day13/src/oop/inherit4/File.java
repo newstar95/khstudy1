@@ -1,4 +1,4 @@
-package oop.inherit;
+package oop.inherit4;
 
 public class File {
 	private String filename;

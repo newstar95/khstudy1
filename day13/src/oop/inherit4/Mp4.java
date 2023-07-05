@@ -1,4 +1,4 @@
-package oop.inherit;
+package oop.inherit4;
 
 public class Mp4 extends MediaFile {
 	private float speed;

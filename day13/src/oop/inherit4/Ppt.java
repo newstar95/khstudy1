@@ -1,4 +1,4 @@
-package oop.inherit;
+package oop.inherit4;
 
 public class Ppt extends DocumentFile{
 	public void slideShow() {

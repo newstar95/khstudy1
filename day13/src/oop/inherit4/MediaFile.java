@@ -1,4 +1,4 @@
-package oop.inherit;
+package oop.inherit4;
 
 public class MediaFile extends File{
 	public void forward() {

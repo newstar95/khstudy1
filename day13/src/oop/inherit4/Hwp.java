@@ -1,4 +1,4 @@
-package oop.inherit;
+package oop.inherit4;
 
 public class Hwp extends DocumentFile{
 	public void preview() {

@@ -1,0 +1,43 @@
+>> 전 시간 복습 : eclipse, github, workspace 
+
+> readme.md 들어가면 처음으로 보이는 파일
+
+JDK = JRE 라고 봐도 됨
+
+>> eclipse 에서 설정
+1. jdk 설정 
+	Window -> Preferences -> 'jdk' -> JREs -> Add -> Standard VM -> 미리 설치한 amazon
+
+2. 글꼴 설정
+	Window -> Preferences -> font -> color and font - 'text font' (앞에 @ 있는 폰트x)
+
+3. 인코딩 설정
+	Window -> Preferences -> 'en' -> workspace -> UTF-8
+
+4. 깃허브 연동 설정
+	* 오른쪽 상단 + 버튼 -> git -> Clone a Git repository -> Clone URI -> 깃허브 주소 입력, 아이디와 발급 받은 토큰 입력 -> 깃허브 폴더 선택
+		>> Working Tree 에서 파일이 있는지 확인 가능 <<
+
+	* 자바 프로젝트 우클릭 -> Team -> 두 번째 share -> create 하지 말고 화살표 아래 눌러서 선택하기 -> 자바 프로젝트 우클릭 -> Team ->
+		Commit -> 상단 네모 칸에 있는 내용을 ++ 눌러서 하단으로 옮기고 commit and push 누르기
+
+5. 깃허브 사용자 설정
+	Window -> Preferences -> 'git' -> Configuration -> Add Entry -> key = user.name / user.email 	
+								value = 깃허브 이름 / 가입한 이메일
+
+>> 데이터의 종류
+	> 숫자: 	소수점 유무
+		있으면 실수 / 없으면 정수
+		
+		정수만의 특징: 
+			크기에 따라 여러 종류가 있다. 
+			각각의 종류마다 이름이 있다.
+		
+		정수는 소수점이 없는 수이다.
+		정수는 크기에 따라 여러 종류로 나뉜다.
+		크기를 벗어나면 저장이 안 된다.
+			//byte c = 150; byte는 127까지만 저장이 된다. 
+			//byte는 파일 같은 걸 처리할 때 쓰고 short는 잘 안 씀
+		정수는 순환형 구조를 가진다 .
+		(중요)정수끼리 계산하면 정수가 나온다		
+		

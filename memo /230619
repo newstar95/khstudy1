@@ -1,0 +1,36 @@
+> JDK(Java Development Kit)
+	- 자바라는 언어를 사용할 수 있게 만들어주는 키트
+> Eclipse IDE (Intellij)
+	- 고급 메모장(코드 작성 도구)
+
+
+>> 자바 설치 확인
+	- window + r -> cmd -> java --version
+	- javac --version
+
+
+> 프로젝트 - 프로그램을 만들기 위해 최적화된 폴더/파일 구조
+> 프로그램 - 실행이 되는 파일들 묶음
+> 프로세스 - 실행중인 프로그램
+
+>>  작업관리자 단축키: ctrl + shift + esc 
+
+> LTS : 안정화 버전
+지금 회사에서는 자바 1.8 (8) 버전을 많이 씀
+
+>> 깃허프 프로필 만들어주는 사이트
+	- github profile generator
+
+>> 강사님 사이트
+	- https://docs.sysout.co.kr/
+
+
+>> 설정
+1. 이클립스 설정 : window -> preferences
+	- 기본으로 이클립스 에디터로 되어있는데 설치한 아마존 에디터로 변경 :  preferences -> 'jdk' -> installed JREs
+	- 이클립스 유니코드 UTF-8로 변경 : preferences -> 'en' -> workspace 
+2. 깃허브 연결
+	- 토큰 패스워드 연결 
+	- 깃 허브에 수정할 때마다 올리기
+		자바코드 창에서 오른쪽 상단에 + 버튼 -> Git -> 우클릭 team -> Commit -> Commit and push
+ 

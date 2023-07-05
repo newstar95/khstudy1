@@ -1,15 +1,11 @@
-package oop.inherit8;
+package oop.inherit8_2;
 
-public class Archer extends Function {
+public class Archer extends Player {
 
-	public Archer(String name, int level) {
-		super(name, level);
+	public Archer(String id) {
+		super(id);
 	}
-	
-	public Archer(String name) {
-		super(name, 1);
-	}
-	
+
 	@Override
 	public void attack() {
 		System.out.println("궁수가 활로 공격합니다!");

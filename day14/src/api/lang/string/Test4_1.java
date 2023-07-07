@@ -2,7 +2,7 @@ package api.lang.string;
 
 import java.util.Scanner;
 
-public class Test04 {
+public class Test4_1 {
 
 	public static void main(String[] args) {
 		// 사용자에게 프로그램 내에서 사용할 닉네임을 입력받도록 구현
@@ -17,7 +17,7 @@ public class Test04 {
 		String name = sc.next();
 		
 		//안되는 걸 먼저 조건에 쓰는 것이 좋다.
-		if(name.length() < 2 || name.length() > 10 ) {
+		if(! (name.length() >= 2 && name.length() <= 10) ) {
 			System.out.println("2글자 이상 10글자 이하 닉네임을 입력해 주세요.");
 		} else if ((name.contains("운영자")))  {
 			System.out.println("'운영자'라는 단어는 포함할 수 없습니다.");

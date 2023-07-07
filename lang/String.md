@@ -63,3 +63,5 @@ boolean isKorean = ch >= '가' && ch <= '힣'; //한글인가
 [가 - 힣]{3} = (3글자)
 [가 - 힣]{3,7} = (3~7글자)
 ^[가 - 힣]$ = 시작^ / 끝$
+
+how secure is my password

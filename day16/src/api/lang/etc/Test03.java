@@ -44,7 +44,7 @@ public class Test03 {
 		}
 		
 		System.out.println(prop.getProperty("java.version")); //자바 버전
-		System.out.println(prop.getProperty("uesr.home")); //사용자 기본폴더
+		System.out.println(prop.getProperty("user.home")); //사용자 기본폴더
 		
 		//[3] 프로그램 종료를 요청할 수 있다.
 		//= 종료상태를 정수로 전달할 수 있다.

@@ -1,5 +1,7 @@
 package api.exception;
 
+import java.time.LocalDate;
+
 public class DateCalculator {
 	
 	//연+월을 월로 바꿔주는 메소드
@@ -26,6 +28,24 @@ public class DateCalculator {
 			total += getMonthDay(year, i);
 		}
 		total += day;
+		return total;
+	}
+	
+	//지정한 날짜가 오늘로부터 몇일 전인지 구하는 메소드
+	public static int getDayCountBefore(int year, int month, int day) {
+		int currentYear = LocalDate.now().getYear();
+		int currentMonth = LocalDate.now().getMonthValue();
+		int currentDay = LocalDate.now().getDayOfMonth();
+		
+		int total = 0;
+		if(currentYear > year) {
+			total += 365 - getYearDay(year, month, day) + 1;
+		}
+		for(int i=1; i < currentYear - year; i++) {
+			total += 365;
+		}
+		total += getYearDay(currentYear, currentMonth, currentDay);
+		
 		return total;
 	}
 	

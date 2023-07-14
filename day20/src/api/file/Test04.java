@@ -19,9 +19,9 @@ public class Test04 {
 		//[1]
 		
 //		File a = new File("sample"); //프로젝트 범위에서 경로를 탐색
-		File a = new File("./sample");
+		File a = new File("./sample"); //이클립스 안에서 확인 가능
 		a.mkdirs();
-		File b =new File("../dummy");
+		File b =new File("../dummy"); //프로젝트 위에 폴더 만들어짐 (이클립스 안에서 확인불가)
 		b.mkdirs();
 		
 		//[2]

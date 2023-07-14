@@ -16,10 +16,13 @@ public class Test03_1 {
 	File writeTarget = new File("./sample/copy2.txt");
 	FileOutputStream writeStream= new FileOutputStream(writeTarget);
 	
-	byte[] buffer = new byte[100];
+	byte[] buffer = new byte[200];
+	
+
 	
 	long count = 0L;
 	long total = readTarget.length();
+	long start = System.currentTimeMillis();
 	DecimalFormat fmt = new DecimalFormat("#,##0.00");
 	
 	while(true) {
@@ -27,10 +30,13 @@ public class Test03_1 {
 		if(a == -1) break;
 			writeStream.write(a);
 			count++;
-			
 			double percent = count * 100d / total;
 			System.out.println(count + "/" + total + "(" + fmt.format(percent) + "%)");
 		}
+	
+	long finish = System.currentTimeMillis();
+	long totalTime = start - finish;
+	
 
 	//정리
 	readStream.close();

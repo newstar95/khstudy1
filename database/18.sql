@@ -56,11 +56,22 @@ SELECT * FROM (
 	)TMP
 ) WHERE rn BETWEEN 1 AND 100;
 
+
 SELECT * FROM (
 	SELECT rownum rn, tmp.* FROM (
 		SELECT * FROM kpop_song ORDER BY kpop_song_playcount DESC 
 	)TMP
 ) WHERE RN BETWEEN 1 AND 100;
+
+
+SELECT * FROM (
+ SELECT rownum rn, TMP.* from(
+ 	SELECT kpop_song_no, kpop_song_title, kpop_song_artist, kpop_song_album, kpop_song_playcount, kpop_song_likecount,
+kpop_song_playcount * 0.6 + kpop_song_likecount * 0.4 랭킹포인트 FROM kpop_song  ORDER BY 랭킹포인트 DESC 
+ )TMP
+) WHERE rn BETWEEN 1 AND 100
+;
+
 
 -- 위 구문을 실행하면 1000개의 데이터가 들어갑니다.
 -- (1) 좋아요를 가장 많이 받은 곡 Top 100을 출력

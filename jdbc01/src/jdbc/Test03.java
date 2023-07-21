@@ -10,7 +10,8 @@ public class Test03 {
 		
 		int no = 50;
 		String name = "테스트";
-//		String name = "테'스'트";
+		//String name = "테'스'트";
+		//String name = "'||(select name from pocketmon where no=43)||'";
 		String type = "무속성";
 		
 		//정적 SQL 구문 방식

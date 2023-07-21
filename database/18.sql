@@ -12,7 +12,7 @@
 - kpop_song_playcount - 재생횟수, 0이상 숫자로 생성, 기본값 0
 - kpop_song_likecount - 좋아요횟수, 0이상 숫자로 생성, 기본값 0
 */
-
+drop table KPOP_SONG;
 CREATE TABLE kpop_song(
 kpop_song_no NUMBER PRIMARY key,
 kpop_song_title varchar(300) NOT null,
@@ -26,7 +26,7 @@ kpop_song_likecount NUMBER DEFAULT 0
 
 CREATE SEQUENCE kpop_song_seq;
 
--- 데이터 추가 구문은 제공해 드립니다.
+-- 데이터 추가 구문은 제공해 드립니다. --(PL/SQL 구문)
 BEGIN
   FOR i IN 1..1000 LOOP
     INSERT INTO kpop_song (
@@ -72,9 +72,19 @@ kpop_song_playcount * 0.6 + kpop_song_likecount * 0.4 랭킹포인트 FROM kpop_
 ) WHERE rn BETWEEN 1 AND 100
 ;
 
+SELECT * FROM (
+ SELECT rownum rn, TMP.* from(
+ 	select KPOP.*,
+ 	kpop_song_playcount * 0.6 + kpop_song_likecount * 0.4 랭킹포인트
+ 	from kpop_song kpop
+ 	order by 랭킹포인트 DESC 
+	)TMP
+) where rn BETWEEN 1 and 100;
 
 -- 위 구문을 실행하면 1000개의 데이터가 들어갑니다.
 -- (1) 좋아요를 가장 많이 받은 곡 Top 100을 출력
+-- 좋아요 오름차순으로 정렬을 먼저 한 뒤 1부터 100까지의 행을 추출
 -- (2) 재생을 가장 많이 한 곡 Top 100을 출력
+
 -- (3) 랭킹포인트를 계산하여 Top 100을 출력
 --      랭킹포인트는 재생수*0.6 + 좋아요*0.4 로 계산합니다

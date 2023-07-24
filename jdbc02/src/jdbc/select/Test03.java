@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import jdbc.dto.BoardDto;
 import jdbc.mapper.BoardMapper;
-import jdbc.util.jdbcUtils;
+import jdbc.util.JdbcUtils;
 
 public class Test03 {
 
@@ -18,7 +18,7 @@ public class Test03 {
 		String sql = "select * from board order by board_no desc";
 		
 		BoardMapper mapper = new BoardMapper();
-		JdbcTemplate jdbcTemplate = jdbcUtils.getJdbcTemplate();
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		List<BoardDto> list = jdbcTemplate.query(sql, mapper);
 		
 		if(list.isEmpty()) {

@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import jdbc.dto.BoardDto;
 import jdbc.mapper.BoardMapper;
-import jdbc.util.jdbcUtils;
+import jdbc.util.JdbcUtils;
 
 public class Test03_1 {
 
@@ -24,7 +24,7 @@ public class Test03_1 {
 		Object[] data = {keyword};
 		
 		BoardMapper mapper = new BoardMapper();
-		JdbcTemplate jdbcTemplate = jdbcUtils.getJdbcTemplate();
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		List<BoardDto> list = jdbcTemplate.query(sql, mapper, data);
 		
 		if(list.isEmpty()) {

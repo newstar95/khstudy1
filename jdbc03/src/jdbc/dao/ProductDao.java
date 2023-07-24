@@ -7,15 +7,18 @@ import jdbc.util.JdbcUtils;
 
 public class ProductDao {
 	public void insert(ProductDto dto) {
-		String sql = "insert into Product("
-				+ "no, name, type, price, made, expire) values("
-				+ "product_seq.nextval, ?, ?, ?, ?, ?)";
-		
-		Object[] data = {dto.getName(), dto.getType(), dto.getPrice(),
-				dto.getMade(), dto.getExpire()};
+		String sql = "insert into product("
+							+ "no, name, type, price, made, expire"
+						+ ") values("
+							+ "product_seq.nextval, ?, ?, ?, ?, ?"//DTO가 Date인 경우
+//							+ "product_seq.nextval, ?, ?, ?, to_date(?,'yyyy-mm-dd'), to_date(?,'yyyy-mm-dd')"//만약 DTO가 문자열이면
+						+ ")";
+		Object[] data = {
+				dto.getName(), dto.getType(), dto.getPrice(),
+				dto.getMade(), dto.getExpire()
+		};
 		
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		jdbcTemplate.update(sql, data);
-		
 	}
 }

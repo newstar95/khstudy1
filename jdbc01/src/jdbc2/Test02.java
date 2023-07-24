@@ -9,12 +9,16 @@ public class Test02 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		//도서 정보 수정 프로그램
+		//데이터
 		int no = 41;
 		System.out.print("수정할 책 제목 입력: ");
 		String title = sc.nextLine();
 		System.out.print("수정할 책 가격 입력: ");
 		double price = sc.nextDouble();
 		
+		//DB처리 "update book set 변경내용 where 조건"; 
+		//자바는 자동 commit 모드를 사용한다.
 		String sql = "update book set BOOK_TITLE=?, BOOK_PRICE=? where BOOK_ID=?";
 		Object[] data = {title, price, no};
 		

@@ -17,10 +17,7 @@ public class Test03 {
 		String boardTitle = sc.next();
 		System.out.print("게시글 내용 수정: ");
 		String boardCotent = sc.next();
-		System.out.print("글쓴이 수정: ");
-		String boardWriter = sc.next();
-		int readCount = 0;
-		sc.close();
+		sc.close(); 
 		
 		//DB처리 "update board set 변경내용 where board_no=?
 		String sql = "update board set board_title=?, board_content=? "

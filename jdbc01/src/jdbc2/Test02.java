@@ -26,7 +26,7 @@ public class Test02 {
 		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
 		dataSource.setUsername("C##KH");
-		dataSource.setPassword("KH");
+		dataSource.setPassword("KH"); 
 
 		JdbcTemplate jdbcTemple = new JdbcTemplate(dataSource);
 		jdbcTemple.update(sql, data);

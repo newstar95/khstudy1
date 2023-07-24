@@ -1,13 +1,5 @@
 package jdbc.select;
 
-import java.util.List;
-
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import jdbc.dto.MemberDto;
-import jdbc.mapper.MemberMapper;
-import jdbc.util.JdbcUtils;
-
 public class Test06_1 {
 
 	public static void main(String[] args) {
@@ -22,26 +14,10 @@ public class Test06_1 {
 		String memberId ="testuser1";
 		String memberPw = "Testuset1!";
 		//DB처리
-		String sql = "select * from member where member_id = ?";
-		Object[] data = {memberId};
-		MemberMapper mapper = new MemberMapper();
-		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
-		List<MemberDto> list = jdbcTemplate.query(sql, mapper, data);
-		//list.size() == 0 or 1 //왜? 조건이 애초에 primary key니까
+//		MemberHelper helper = new MemberHelper();
+//		boolean result = helper.login(memberId, memberPw);
 		
-//		MemberDto dto;
-//		if(list.isEmpty()) {
-//			dto = null;
-//		} else {
-//			dto = list.get(0);
-//		}
-		MemberDto dto = list.isEmpty() ? null : list.get(0); //3항 연산자(if문 축소)
-		
-//		System.out.println(dto);
-//		boolean isLogin = dto가 null이 아니면서 dto의 비밀번호와 사용자 비밀번호가 일치하는가?
-		//비밀번호를 자바에서 비교하도록 구현해야 한다.
-		boolean isLogin = dto != null && dto.getMemberPw().equals(memberPw);
-		System.out.println(isLogin);
+//		System.out.println("로그인 결과 = " + result);
 		
 		
 	}

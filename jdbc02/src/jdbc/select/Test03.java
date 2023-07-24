@@ -21,8 +21,14 @@ public class Test03 {
 		JdbcTemplate jdbcTemplate = jdbcUtils.getJdbcTemplate();
 		List<BoardDto> list = jdbcTemplate.query(sql, mapper);
 		
-		for(BoardDto dto : list) {
-			System.out.println(dto);
+		if(list.isEmpty()) {
+	//if(list.size() == 0) {
+			System.out.println("게시글이 존재하지 않습니다");
+		} else {
+			for(BoardDto dto : list) {
+				System.out.println(dto); //dto.toString()
+				//System.out.println(dto.getBoardTitle()); //제목만 찍겠다
+			}
 		}
 		
 	}

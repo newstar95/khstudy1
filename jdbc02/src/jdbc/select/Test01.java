@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import jdbc.dto.PocketmonDto;
 import jdbc.mapper.PocketmonMapper;
-import jdbc.util.jdbcUtils;
+import jdbc.util.JdbcUtils;
 
 public class Test01 {
 
@@ -22,7 +22,7 @@ public class Test01 {
 		
 		PocketmonMapper mapper = new PocketmonMapper();
 		
-		JdbcTemplate jdbcTemplate = jdbcUtils.getJdbcTemplate();
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		
 		List<PocketmonDto> list = jdbcTemplate.query(sql, mapper);
 		

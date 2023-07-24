@@ -2,7 +2,7 @@ package jdbc.delete;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import jdbc.util.jdbcUtils;
+import jdbc.util.JdbcUtils;
 
 public class Test01 {
 
@@ -17,7 +17,7 @@ public class Test01 {
 		String sql = "delete pocketmon where no =?";
 		Object[] data = {no};
 		
-		JdbcTemplate jdbcTemplate = jdbcUtils.getJdbcTemplate();
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		
 		int result = jdbcTemplate.update(sql, data);
 		System.out.println("result = " + result);

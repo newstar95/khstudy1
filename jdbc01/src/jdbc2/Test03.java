@@ -9,13 +9,17 @@ public class Test03 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		//게시글 정보 수정 프로그램
-		//데이터
+		// 사용자에게 정보를 입력받아 Board 테이블의 항목을 수정하는 프로그램을 구현
+		//성공/실패로 결과를 구분하여 출력
+		//가능한 모든 정보를 변경하도록 처리
 		int boardNo = 1;
 		System.out.print("게시글 제목 수정: ");
 		String boardTitle = sc.next();
 		System.out.print("게시글 내용 수정: ");
 		String boardCotent = sc.next();
+		System.out.print("글쓴이 수정: ");
+		String boardWriter = sc.next();
+		int readCount = 0;
 		sc.close();
 		
 		//DB처리 "update board set 변경내용 where board_no=?
@@ -38,8 +42,7 @@ public class Test03 {
 			System.out.println("게시글 수정 완료");
 		} else {
 			System.out.println("게시글 수정 실패");
-		}
-
 	}
 
+	}
 }

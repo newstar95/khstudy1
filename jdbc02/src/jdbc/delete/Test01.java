@@ -1,5 +1,7 @@
 package jdbc.delete;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import jdbc.util.jdbcUtils;
 
 public class Test01 {

@@ -9,7 +9,6 @@ public class Test15 {
 
 	public static void main(String[] args) {
 		// 도서 목록 출력 프로그램
-		
 		//데이터 없음
 		
 		//DB처리
@@ -24,7 +23,6 @@ public class Test15 {
 				System.out.println(dto.getBookTitle()+"($" + dto.getBookPrice() + ")");
 			}
 		}
-		
 		
 	}
 

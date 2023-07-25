@@ -48,4 +48,11 @@ public class BoardDao {
 		return jdbcTemplate.update(sql,data) > 0;
 	}
 
+	public boolean delete(int boardNo) {
+		String sql = "delete board where board_no=?";
+		Object[] data = {boardNo};
+		
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+		return jdbcTemplate.update(sql,data) > 0;
+	}
 }

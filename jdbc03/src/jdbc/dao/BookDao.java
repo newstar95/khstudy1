@@ -41,4 +41,13 @@ public class BookDao {
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		return jdbcTemplate.update(sql,data) > 0;
 	}
+
+	//삭제
+	public boolean delete(String id) {
+		String sql = "delete book where book_id=?";
+		Object[] data = {id};
+		
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+		return jdbcTemplate.update(sql,data) > 0;
+	}
 }

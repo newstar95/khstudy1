@@ -32,4 +32,28 @@ public class PocketmonDao {
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		jdbcTemplate.update(sql, data);
 	}
+
+
+	//U(수정) 메소드
+	//- no를 이용해서 name과 type을 바꾼다.
+	//데이터를 DTO로 묶어서 보는 능력과 DTO와 ListDto를 구별하는 능력이 필요
+	//- 적용된 행이 있는지 없는지를 알아야 한다.
+
+	//수정이 됐는지 꼭 확인을 하기 위해 Boolean
+	public boolean update(PocketmonDto dto) {
+		String sql = "update pocketmon set name=?, type=? where no=?";
+		Object[] data = {
+				dto.getName(), dto.getType(), dto.getNo()
+		};
+		
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+		int result = jdbcTemplate.update(sql, data); 
+		
+//	if (result > 0)return true; //result가 0보다 크면 참 
+//	else return false; //아니면 거짓을 반환해라
+		
+		return result > 0; //result가 0보다 큰지 판정해서 반환해라
+			
+	}
+	
 }

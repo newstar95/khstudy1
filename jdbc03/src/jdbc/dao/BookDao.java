@@ -54,7 +54,6 @@ public class BookDao {
 		return jdbcTemplate.update(sql,data) > 0;
 	}
 
-	
 	//Mapper
 	private BookMapper mapper = new BookMapper();
 	
@@ -66,6 +65,15 @@ public class BookDao {
 		return jdbcTemplate.query(sql, mapper);
 	}
 	
+	//상세
+	public BookDto selectOne(int bookId) {
+		String sql = "select * from book where book_id=?";
+		Object[] data = {bookId};
+		
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+		List<BookDto> list = jdbcTemplate.query(sql,mapper, data);
+		return list.isEmpty() ? null : list.get(0);
+	}
 	
 }
 	

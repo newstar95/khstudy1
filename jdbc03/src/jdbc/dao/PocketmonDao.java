@@ -89,6 +89,7 @@ public class PocketmonDao {
 	//R(상세) 메소드
 	//- Primary key를 이용하여 하나의 결과만 나오는 구문
 	//- 자바에서는 DTO 형태로 취급
+	//	조회하려면 Mapper가 필요
 	//public PocketmonDto selectOne(PocketmonDto dto){
 	public PocketmonDto selectOne(int no) {
 		String sql = "select * from pocketmon where no=?";
@@ -96,11 +97,12 @@ public class PocketmonDao {
 		
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 		List<PocketmonDto> list = jdbcTemplate.query(sql, mapper,data);
-		if (list.isEmpty()) {
-			return null;
-		} else {
-			return list.get(0);
-		}
+//		if (list.isEmpty()) {
+//			return null;
+//		} else {
+//			return list.get(0);
+//		}
+		return list.isEmpty() ? null : list.get(0);
 	}
 
 }

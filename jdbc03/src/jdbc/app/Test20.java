@@ -14,7 +14,7 @@ public class Test20 {
 		if(dto == null) {
 			System.out.println("찾으시는 책이 없습니다.");
 		} else {
-			System.out.println("제목:" + dto.getBookTitle());
+			System.out.println("제목: " + dto.getBookTitle());
 			System.out.println("작가: " + dto.getBookAuthor());
 			System.out.println("장르: " + dto.getBookGenre());
 			System.out.println("출판사: " + dto.getBookPublisher()); 

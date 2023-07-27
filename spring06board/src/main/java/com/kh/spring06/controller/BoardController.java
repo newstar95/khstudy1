@@ -3,6 +3,7 @@ package com.kh.spring06.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.spring06.dao.BoardDao;
@@ -27,6 +28,17 @@ public class BoardController {
 			return "게시글 변경 완료";
 		} else {
 			return "존재하지 않는 글 번호";
+		}
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int boardNo) {
+		boolean result = dao.delete(boardNo);
+		
+		if(result) {
+			return "게시글 삭제 완료";
+		} else {
+			return "존재하지 않는 게시글 번호";
 		}
 	}
 	

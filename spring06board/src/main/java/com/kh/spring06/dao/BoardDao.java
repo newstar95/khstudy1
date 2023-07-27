@@ -3,6 +3,7 @@ package com.kh.spring06.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring06.dto.BoardDto;
 
@@ -34,4 +35,12 @@ public class BoardDao {
 		return jdbcTemplate.update(sql,data) > 0;
 	}
 	
+	public boolean delete(int boardNo) {
+		String sql = "delete board where board_no=?";
+		Object[] data = {boardNo};
+		
+		return jdbcTemplate.update(sql,data) > 0;
+				
+	} 
+
 }

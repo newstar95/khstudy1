@@ -16,7 +16,7 @@ public class PocketmonController {
 	//@ModelAttribute는 필드에 값을 채우는 명령
 	@RequestMapping("/insert")
 	public String insert(@ModelAttribute PocketmonDto dto) {
-		// @RequestParam // 낱개로 받고 싶을 때 지정하는 키워드
+		// @RequestParam // 낱개로 받고 싶을 때 지정 하는 키워드
 		dao.insert(dto);
 		return "포켓몬 등록 완료!";
 	}

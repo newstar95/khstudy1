@@ -17,9 +17,10 @@ public class BoardDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	private BoardDetailMapper detailMapper;
+	private BoardListMapper listMapper;
 	
-	@Autowired BoardListMapper listMapper;
+	@Autowired
+	private BoardDetailMapper detailMapper;
 	
 	public void insert(BoardDto dto) {
 		String sql = "insert into board("
@@ -35,35 +36,38 @@ public class BoardDao {
 	}
 	
 	public boolean update(BoardDto dto) {
-		String sql = "update board set board_title=?, board_content=? "
-				+ "where board_no=?";
+		String sql = "update board "
+						+ "set board_title=?, board_content=? "
+						+ "where board_no=?";
 		Object[] data = {
-				dto.getBoardTitle(), dto.getBoardContent(), dto.getBoardNo()
+				dto.getBoardTitle(), dto.getBoardContent(), 
+				dto.getBoardNo()
 		};
-		return jdbcTemplate.update(sql,data) > 0;
-	}
-	
-	public boolean delete(int boardNo) {
-		String sql = "delete board where board_no=?";
-		Object[] data = {boardNo};
-		
-		return jdbcTemplate.update(sql,data) > 0;
-				
+		return jdbcTemplate.update(sql, data) > 0;
 	}
 
+	public boolean delete(int boardNo) {
+		String sql = "delete board where board_no = ?";
+		Object[] data = {boardNo};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	
 	public List<BoardDto> selectList() {
+		//String sql = "select * from board order by board_no desc";
 		String sql = "select "
-				+ "board_no, board_title, "
-				+ "board_writer, board_readcount "
-				+ "from "
-				+ "board order by board_no desc";
+							+ "board_no, board_title, "
+							+ "board_writer, board_readcount "
+						+ "from "
+						+ "board order by board_no desc";
 		return jdbcTemplate.query(sql, listMapper);
-	} 
+	}
 	
 	public BoardDto selectOne(int boardNo) {
 		String sql = "select * from board where board_no = ?";
 		Object[] data = {boardNo};
-		List<BoardDto> list = jdbcTemplate.query(sql,  detailMapper, data);
+		
+		List<BoardDto> list = jdbcTemplate.query(sql, detailMapper, data);
 		return list.isEmpty() ? null : list.get(0);
 	}
+	
 }

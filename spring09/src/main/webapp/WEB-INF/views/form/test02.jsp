@@ -9,10 +9,10 @@
 <body>
 	<h1>게시글 작성</h1>
 	<!-- 
-	작성자
-	글제목
-	내용
-	여러줄 입력창(textarea)으로 처리 (rows=줄수, cols=칸수)
+		작성자(boardWriter) 
+		제목(boardTitle)
+		내용(boardContent)
+		여러줄 입력창(textarea)으로 처리 (rows=줄수, cols=칸수)
 ㄴ	 -->
 	 <form action="http://localhost:8080/insert">
 	 글 제목: <input name="boardTitle"><br>

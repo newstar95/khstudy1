@@ -24,8 +24,7 @@
 	[2] 전송할 데이터의 이름 - input에 작성(name 속성)
 	
 	 -->
-	 
-	 <form action="https://www.google.com">
+	 <form action="http://localhost:8080/insert">
 	 	번호: <input name="no"><br><br>
 	 	이름: <input name="name"><br><br>
 	 	속성: <input name="type"><br><br>

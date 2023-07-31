@@ -29,6 +29,14 @@ public class ViewController {
 		return "/WEB-INF/views/image.jsp";
 	}
 	
+	@RequestMapping("snsLogin")
+	public String sns() {
+		return "/WEB-INF/views/quiz1.jsp";
+	}
 	
+	@RequestMapping("dummy")
+	public String dummy() {
+		return "/WEB-INF/views/dummy.jsp";
+	}
 
 }

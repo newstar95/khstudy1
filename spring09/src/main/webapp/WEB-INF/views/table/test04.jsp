@@ -7,20 +7,22 @@
 <title>KH대학 시간표</title>
 </head>
 <body>
+	
 	<h1>KH대학 시간표</h1>
-		<table border="1">
-			<thead>
+	
+	<table border="1">
+		<thead>
 			<tr bgcolor="74b9ff">
 				<th></th>
-				<th width="15%">월</th>
-				<th width="15%">화</th>
-				<th width="15%">수</th>
-				<th width="15%">목</th>
-				<th width="15%">금</th>
+				<th width="17%">월</th>
+				<th width="17%">화</th>
+				<th width="17%">수</th>
+				<th width="17%">목</th>
+				<th width="17%">금</th>
 			</tr>
-			</thead>
-			<tbody align="center">
-			<tr bac>
+		</thead>
+		<tbody align="center">
+			<tr>
 				<th>1교시</th>
 				<td rowspan="3">자바기초</td>
 				<td rowspan="6">공강</td>
@@ -52,7 +54,8 @@
 				<td></td>
 				<td>인공지능 심화</td>
 			</tr>
-			</tbody>
-		</table>
+		</tbody>
+	</table>
+	
 </body>
 </html>

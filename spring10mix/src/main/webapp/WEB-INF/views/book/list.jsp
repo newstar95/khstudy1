@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>도서 목록</h1>
+	
 	<table border="1" width="1000">
 		<thead>
 			<tr>
@@ -23,6 +24,7 @@
 			</tr>
 		</thead>
 		<tbody>
+		
 			<c:forEach var="dto" items="${list}">
 			<tr>
 				<th>${dto.bookId}</th>
@@ -38,8 +40,9 @@
 				<th>${dto.bookGenre}</th>
 			</tr>
 			</c:forEach>
+			
 		</tbody>
 	</table>
-
+	
 </body>
 </html>

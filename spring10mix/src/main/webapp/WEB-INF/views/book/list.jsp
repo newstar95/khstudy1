@@ -38,6 +38,9 @@
 				<th>${dto.bookPublisher}</th>
 				<th>${dto.bookPageCount}p</th>
 				<th>${dto.bookGenre}</th>
+				<th>
+				<a href="delete?bookId=${dto.bookId}">삭제</a>
+				</th>
 			</tr>
 			</c:forEach>
 			

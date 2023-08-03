@@ -69,5 +69,17 @@ public class BookController {
 		}
 	}
 	
+	//삭제
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int bookId) {
+		boolean result = dao.delete(bookId);
+		
+		if (result) {
+			return "redirect:list";
+		} else {
+			return "redirect:에러페이지주소";
+		}
+	}
+	
 
 }

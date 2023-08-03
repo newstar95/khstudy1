@@ -40,6 +40,8 @@
 	
 	<c:if test="${dto != null}">
 		<a href="edit?boardNo=${dto.boardNo}">수정하기</a>
+		<a href="delete?boardNo=${dto.boardNo}">삭제하기</a>
+		<a href="delete/${dto.boardNo}">삭제하기2</a>
 	</c:if>
 	<a href="list">목록보기</a>
 	

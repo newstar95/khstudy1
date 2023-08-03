@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,5 +68,33 @@ public class BoardController {
 			return "redirect:에러페이지주소";
 		}
 	}
-
+	
+	//삭제
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int boardNo) {
+		boolean result = dao.delete(boardNo);
+		if(result) {
+			return "redirect:list";
+		} else {
+			return "redirect:에러페이지주소";
+		}
+	}
+	
+	//경로변수(Path Variable) 매핑 처리
+	//- 경로 중간에 변수로 사용할 영역으로 지정하는 방식
+	//- 주소를 간단하게 만들기 위해서 사용
+	//- 전달할 값이 많으면 안 쓰는 게 좋다, 기본키 하나로만 처리할 수 있는 경우에 사용한다.
+	//- @PathVariable로 처리하며 [경로의 끝지점(enepoint)이 달라진다]
+	//- 절대경로를 쓰는 게 좋다
+	
+	@RequestMapping("/delete/{boardNo}")
+	public String delete2(@PathVariable int boardNo) {
+	boolean result = dao.delete(boardNo);
+		if(result) {
+	//		return "redirect:../list";
+			return "redirect:/board/list";
+		} else {
+			return "redirect:에러페이지주소";
+		}
+	}
 }

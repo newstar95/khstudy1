@@ -36,6 +36,6 @@
 			<h2>해당 도서는 존재하지 않습니다</h2>
 		</c:otherwise>
 	</c:choose>
-
+	<h2><a href="list">목록으로 돌아가기</a></h2>
 </body>
 </html>

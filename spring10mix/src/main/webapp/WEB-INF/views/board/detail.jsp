@@ -30,12 +30,18 @@
 					<td>${dto.boardContent}</td>
 				</tr>
 			</table>
+			
 		</c:when>
 		<c:otherwise>
 			<h1>존재하지 않는 게시글입니다</h1>
 			<img src="https://dummyimage.com/600x400/000/fff">
 		</c:otherwise>
 	</c:choose>
-
+	
+	<c:if test="${dto != null}">
+		<a href="edit?boardNo=${dto.boardNo}">수정하기</a>
+	</c:if>
+	<a href="list">목록보기</a>
+	
 </body>
 </html>

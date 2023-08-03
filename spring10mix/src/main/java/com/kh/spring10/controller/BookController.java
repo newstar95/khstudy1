@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,6 +34,18 @@ public class BookController {
 		List<BookDto> list = dao.selectList();
 		model.addAttribute("list", list);
 		return "/WEB-INF/views/book/list.jsp";
+	}
+	
+	//등록
+	@GetMapping("/insert")
+	public String insert() {
+		return "/WEB-INF/views/book/insert.jsp";
+	}
+	
+	@PostMapping("/insert") //처리 후 제3의 페이지로 넘기는 게 목적
+	public String insert(@ModelAttribute BookDto dto) {
+		dao.insert(dto);
+		return "redirect:list";
 	}
 
 }

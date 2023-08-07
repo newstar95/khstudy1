@@ -6,14 +6,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int A = sc.nextInt();
-		int B = sc.nextInt();
-		int C = sc.nextInt();
+		int num = sc.nextInt();
+		String result;
 		
-		System.out.println((A+B)%C);
-		System.out.println(((A%C)+(B%C))%C);
-		System.out.println((A*B)%C);
-		System.out.println(((A%C)*(B%C))%C);
+		if (num <= 68 && num >= 0) result = "F";
+		else if (num <= 69 ) result = "D";
+		else if (num <= 79 ) result = "C";
+		else result = "A";
 		
-		}
+		System.out.println(result);
+	}
 }

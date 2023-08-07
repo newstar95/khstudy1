@@ -13,8 +13,8 @@ public class ShirtMapper implements RowMapper<ShirtDto> {
 
 	@Override
 	public ShirtDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-		ShirtDto dto = new ShirtDto();
-		dto.setShirtNo(rs.getInt("shirt_no"));
+		ShirtDto dto = new ShirtDto(); //비어있는 Dto를 생성하여 
+		dto.setShirtNo(rs.getInt("shirt_no")); //옮겨 담기
 		dto.setShirtName(rs.getString("shirt_name"));
 		dto.setShirtColor(rs.getString("shirt_color"));
 		dto.setShirtPrice(rs.getInt("shirt_price"));

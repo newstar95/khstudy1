@@ -15,7 +15,6 @@ public class ShirtDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	//mapper도 만든 다음 주세요하기
 	@Autowired
 	private ShirtMapper mapper;
 	

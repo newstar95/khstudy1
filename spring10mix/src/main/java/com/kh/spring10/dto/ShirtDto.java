@@ -1,8 +1,9 @@
 package com.kh.spring10.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
+@Data @NoArgsConstructor //<- 기본 생성자
 public class ShirtDto {
 	private int shirtNo;
 	private String shirtName;

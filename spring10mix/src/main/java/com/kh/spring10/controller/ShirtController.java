@@ -15,7 +15,7 @@ import com.kh.spring10.dao.ShirtDao;
 import com.kh.spring10.dto.ShirtDto;
 
 @Controller
-@RequestMapping("shirt")
+@RequestMapping("shirt") //공용주소는 GET/POST 지정 불가
 public class ShirtController {
 	
 	@Autowired

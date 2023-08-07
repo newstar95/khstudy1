@@ -33,11 +33,11 @@
 					<td>${dto.shirtType}</td>
 				</tr>
 				<tr>
-					<th>재질</th>
+					<th>재질(원단)</th>
 					<td>${dto.shirtMaterial}</td>
 				</tr>
 				<tr>
-					<th>판매수량</th>
+					<th>재고</th>
 					<td>${dto.shirtStock}개</td>
 				</tr>
 				

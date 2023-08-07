@@ -52,6 +52,7 @@
 		<a href="edit?shirtNo=${dto.shirtNo}">상품 수정</a>
 		<a href="delete?shirtNo=${dto.shirtNo}">상품 삭제</a>
 	</c:if>
+	<a href="add">상품 등록</a>
 	<a href="list">상품 목록</a>
 </body>
 </html>

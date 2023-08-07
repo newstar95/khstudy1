@@ -13,7 +13,7 @@ import com.kh.spring10.dto.ShirtDto;
 //- spring-boot-starter-test라는 의존성에서 모두 제공(pom.xml)(추가 하지 않아도 스프링을 사용한다면 자동으로 생김)
 
 @SpringBootTest //스프링에서 등록한 모든 도구를 가져다 쓸 수 있다. 이게 있어야 Autowired를 사용 가능
-public class Test01 { //이름이 그냥 Test라고 지으면 안 된다.
+public class shirtInsertTest { //이름이 그냥 Test라고 지으면 안 된다.
 	
 	@Autowired 
 	private ShirtDao dao;

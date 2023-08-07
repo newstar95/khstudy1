@@ -10,7 +10,7 @@
 <body>
 	<h1>셔츠 상품 목록</h1>
 	
-	<h3><a href="add">신규 상품 등록</a></h3>
+	<h3><a href="add2">신규 상품 등록</a></h3>
 	
 	<table border="1" width="700"> <!-- 1000을 넘어가면 모니터애 따라 잘릴 수 있다. 
 	보통 사람들이 쓰는 모니터는 1000~1200 사이이다.  -->
@@ -26,7 +26,7 @@
 		<tbody align="center">
 			<c:forEach var="dto" items="${list}">
 			<tr>
-				<td><a href="detail?shirtNo=${dto.shirtNo}">
+				<td><a href="detail2?shirtNo=${dto.shirtNo}">
 				${dto.shirtName}</a></td>
 				<td>${dto.shirtColor}</td>
 				<td>${dto.shirtPrice}</td>

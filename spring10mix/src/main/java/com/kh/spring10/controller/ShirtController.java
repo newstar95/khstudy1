@@ -122,4 +122,35 @@ public class ShirtController {
 		
 		return "/WEB-INF/views/shirt/detail2.jsp";
 	}
+	
+	@GetMapping("/edit2")
+	public String edit2(@RequestParam int shirtNo, Model model) {
+		ShirtDto shirtDto = dao.selectOne(shirtNo);
+		model.addAttribute("shirtDto", shirtDto); //셔츠 정보
+		
+		List<ShirtSizeDto> sizeList = sizeDao.selectList(shirtNo);
+		model.addAttribute("sizeListt", sizeList); //사이즈 목록 정보
+		
+		return "/WEB-INF/views/shirt/edit2.jsp";
+	}
+	
+	@PostMapping("/edit2")
+	public String edit2(@ModelAttribute ShirtDto shirtDto, 
+					@RequestParam List<String> size) {
+		boolean result = dao.update(shirtDto);
+		if(result) {
+			//사이즈 삭제 후 추가
+			sizeDao.delete(shirtDto.getShirtNo());
+			for(String s : size) {
+				ShirtSizeDto sizeDto = new ShirtSizeDto();
+				sizeDto.setShirtNo(shirtDto.getShirtNo());
+				sizeDto.setShirtSizeName(s);
+				sizeDao.insert(sizeDto);
+			}
+			return "redirect:detail2?shirtNo="+shirtDto.getShirtNo();
+		}
+		else {
+			return "redirect:에러페이지";
+		}
+	}
 }

@@ -30,5 +30,11 @@ public class ShirtSizeDao {
 		Object[] data = {shirtNo};
 		return jdbcTemplate.query(sql, mapper, data);
 	}
+	
+	public boolean delete(int shirtNo) {
+		String sql = "delete shirt_size where shirt_no=?";
+		Object[] data = {shirtNo};
+		return jdbcTemplate.update(sql,data) > 0;
+	}
 
 }

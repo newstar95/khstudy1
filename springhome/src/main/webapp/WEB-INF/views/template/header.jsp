@@ -30,12 +30,14 @@
 	 <c:choose>
 	 	<c:when test="${sessionScope.name != null}">
 		 	<a href="/">홈</a>
+		 	<a href="/member/mypage">마이페이지</a>
 		 	<a href="/member/logout">로그아웃</a>
 			<a href="/board/list">게시판</a>
 	 	</c:when>
 	 	<c:otherwise>
 			<a href="/member/join">회원가입</a>
 			<a href="/member/login">로그인</a>
+			<a href="/board/list">게시판</a>
 	 	</c:otherwise>
 	 </c:choose>
 	<hr>

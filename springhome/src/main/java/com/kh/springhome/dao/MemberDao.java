@@ -8,5 +8,6 @@ import com.kh.springhome.dto.MemberDto;
 //인터페이스는 등록x , @Repository를 쓰면 오류가 난다. 인터페이스는 객체 생성이 안 되기 때문에
 public interface MemberDao {
 	void insert(MemberDto memberDto);
+	MemberDto selectOne(String memberId);
 
 }

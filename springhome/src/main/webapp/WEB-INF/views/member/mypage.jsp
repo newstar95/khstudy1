@@ -69,5 +69,8 @@
 		</td>
 	</tr>
 </table>
+
+<h3><a href="password">비밀번호 변경</a></h3>
+<h3><a href="change">개인정보 변경</a></h3>
 	
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

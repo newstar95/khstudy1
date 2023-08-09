@@ -34,7 +34,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		//간섭하고 싶은 주소, 인터셉스가 여러 개면 이 코드를 여러 개 쓰면 됨
+		//간섭하고 싶은 주소, 인터셉트가 여러 개면 이 코드를 여러 개 쓰면 됨
 		
 		//[1] TestInterCeptor를 모든 주소 처리과정에 간섭할 수 있도록 설정하겠다.
 		registry.addInterceptor(testInterceptor).addPathPatterns("/**");

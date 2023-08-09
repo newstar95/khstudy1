@@ -136,7 +136,9 @@ public class MemberController {
 	//개인정보 변경
 	@GetMapping("/change")
 	public String change(HttpSession session, Model model) {
-		String memberId = (String)session.getAttribute("name");
+		//세션으로 아이디를 불러옴
+		String memberId = (String)session.getAttribute("name"); 
+		//아이디로 정보를 불러옴
 		MemberDto memberDto = memberDao.selectOne(memberId); //로그인한 회원의 모든 정보가 나옴
 		model.addAttribute("memberDto", memberDto); //모델에 그 정보를 넣어줌
 		return "/WEB-INF/views/member/change.jsp";
@@ -155,6 +157,31 @@ public class MemberController {
 		else { //비밀번호가 일치하지 않는다면 -> 다시 입력하도록 되돌려보냄
 			return "redirect:change?error";
 		}
+	}
+	
+	@GetMapping("/exit")
+	public String exit(HttpSession session) {
+		String memberId = (String) session.getAttribute("name");
+		return "/WEB-INF/views/member/exit.jsp";
+	}
+	
+	@PostMapping("/exit")
+	public String exit(HttpSession session, @RequestParam String memberPw){
+		String memberId = (String) session.getAttribute("name");
+		
+		MemberDto memberDto = memberDao.selectOne(memberId);
+		if (memberDto.getMemberPw().equals(memberPw)) { //비밀번호 일치 
+			//삭제
+			memberDao.delete(memberId);
+			//로그아웃
+			session.removeAttribute("name");//세션에서 name의 값을 삭제
+//			session.invalidate();//세션 소멸 비추천(세션 자체가 삭제되어 다시 들어오면 신규 세션 생성)
+			
+			return "/WEB-INF/views/member/exitFinish.jsp";
+		} 
+		else {//비밀번호 불일치
+		} 
+		return "redirect:exit?error";
 	}
 		
 

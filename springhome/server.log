@@ -1,0 +1,24 @@
+2023-08-10 13:59:09.280  INFO 15148 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-I5JFQGM with PID 15148 (C:\Users\별\git\khstudy\springhome\target\classes started by byeol in C:\Users\별\git\khstudy\springhome)
+2023-08-10 13:59:09.280 DEBUG 15148 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-08-10 13:59:09.280  INFO 15148 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-08-10 13:59:10.564  INFO 15148 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Started SpringhomeApplication in 1.379 seconds (JVM running for 131.625)
+2023-08-10 13:59:32.372  INFO 796 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-I5JFQGM with PID 796 (C:\Users\별\git\khstudy\springhome\target\classes started by byeol in C:\Users\별\git\khstudy\springhome)
+2023-08-10 13:59:32.374 DEBUG 796 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-08-10 13:59:32.375  INFO 796 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-08-10 13:59:35.310  INFO 796 --- [restartedMain] com.kh.springhome.SpringhomeApplication  : Started SpringhomeApplication in 3.298 seconds (JVM running for 4.006)
+2023-08-10 14:00:59.65 [INFO ] Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-I5JFQGM with PID 796 (C:\Users\별\git\khstudy\springhome\target\classes started by byeol in C:\Users\별\git\khstudy\springhome)  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:00:59.66 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:00:59.66 [INFO ] No active profile set, falling back to 1 default profile: "default"  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:01:00.14 [INFO ] Started SpringhomeApplication in 0.982 seconds (JVM running for 88.71)  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:55.69 [INFO ] Starting SpringhomeApplication using Java 17.0.7 on DESKTOP-I5JFQGM with PID 796 (C:\Users\별\git\khstudy\springhome\target\classes started by byeol in C:\Users\별\git\khstudy\springhome)  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:55.70 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:55.70 [INFO ] No active profile set, falling back to 1 default profile: "default"  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:02:56.59 [INFO ] Started SpringhomeApplication in 1.023 seconds (JVM running for 204.756)  - com.kh.springhome.SpringhomeApplication 
+2023-08-10 14:03:00.477 [INFO ] Starting LoggingTest1 using Java 17.0.7 on DESKTOP-I5JFQGM with PID 10108 (started by byeol in C:\Users\별\git\khstudy\springhome)  - com.kh.springhome.LoggingTest1 
+2023-08-10 14:03:00.479 [DEBUG] Running with Spring Boot v2.7.14, Spring v5.3.29  - com.kh.springhome.LoggingTest1 
+2023-08-10 14:03:00.480 [INFO ] No active profile set, falling back to 1 default profile: "default"  - com.kh.springhome.LoggingTest1 
+2023-08-10 14:03:05.66 [INFO ] Started LoggingTest1 in 5.084 seconds (JVM running for 6.562)  - com.kh.springhome.LoggingTest1 
+2023-08-10 14:03:05.708 [DEBUG] 메세지2  - com.kh.springhome.LoggingTest1 
+2023-08-10 14:03:05.708 [INFO ] 메세지3  - com.kh.springhome.LoggingTest1 
+2023-08-10 14:03:05.708 [WARN ] 메세지4  - com.kh.springhome.LoggingTest1 
+2023-08-10 14:03:05.708 [ERROR] 메세지5  - com.kh.springhome.LoggingTest1 

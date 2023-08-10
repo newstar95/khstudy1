@@ -20,13 +20,34 @@ public class ExceptionControllerAdvice {
 	 - 처리할 예외의 종류 지정 가능
 	 - 메소드의 형태는 컨트롤러와 같음
 	 - try 구문의 catch 블록과 같은 역할을 수행
+	 - 이 메소드에는 컨트롤러처럼 매개변수를 선언하면 사용할 수 있다.
+	 	- Model, HttpSession 등 기본적인 컨트롤러의 도구 사용 가능
+	 	- catch 처럼 예외 처리 객체를 선언할 수 있다.
 	 */
 	
 	@ExceptionHandler(Exception.class)
-	public String error() {
+	public String error(Exception e) {
+		e.printStackTrace(); //로그가 찍힘
 		return "/WEB-INF/views/error/500.jsp"; //프로그램 내에서 실행 중에 문제가 생긴 코드 500
 	}
 
+//스프링이 인식하지 못하는 예외
+//- 실행은 됐지만 적용대상이 없음
+
+/*
+ 내가 지정한 예외들을 처리하도록 추가 핸들러(처리기) 설정
+ */
+
+	@ExceptionHandler(NoTargetException.class)
+	public String noTarget(NoTargetException e) {
+		return "/WEB-INF/views/error/noTarget.jsp";
+	}
+	
+	@ExceptionHandler(AuthorityException.class)
+	public String authority(AuthorityException e) {
+		e.printStackTrace();
+		return "/WEB-INF/views/error/authority.jsp";
+	}
 }
 
 

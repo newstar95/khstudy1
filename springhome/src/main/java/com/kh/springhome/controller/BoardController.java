@@ -59,22 +59,23 @@ public class BoardController {
 		return "/WEB-INF/views/board/list.jsp";
 	}
 	
-//	//-만약 소유자 검사를 추가한다면
-//	//- 현재 로그인한 사용자와 게시글 작성자가 같다면 소유자로 판정
-//	@RequestMapping("/delete")
-//	public String delete(@RequestParam int boardNo, HttpSession session) {
-//		BoardDto boardDto = boardDao.selectOne(boardNo);
-//		String boardWriter = boardDto.getBoardWriter();
-//		
-//		String memberId = (String) session.getAttribute("name");
-//		
-//		if(memberId.equals(boardWriter)) { //소유자라면
-//			boardDao.delete(boardNo);
+		//- 만약 소유자 검사를 추가한다면
+		//- 현재 로그인 한 사용자와 게시글 작성자가 같다면 소유자로 판정
+//		@RequestMapping("/delete")
+//		public String delete(@RequestParam int boardNo, HttpSession session) {
+//			BoardDto boardDto = boardDao.selectOne(boardNo);
+//			String boardWriter = boardDto.getBoardWriter();
+//			
+//			String memberId = (String) session.getAttribute("name");
+//			
+//			if(memberId.equals(boardWriter)) {//소유자라면
+//				boardDao.delete(boardNo);
 //				return "redirect:list";
-//		} else {
-//			throw new AuthorityException("글 작성자가 아닙니다.");
+//			}
+//			else {
+//				throw new AuthorityException("글 작성자가 아닙니다");
+//			}
 //		}
-//	}
 	
 		@RequestMapping("/delete")
 		public String delete(@RequestParam int boardNo) {

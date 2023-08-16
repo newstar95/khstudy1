@@ -1,5 +1,10 @@
 package com.kh.springhome.controller;
 
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +38,32 @@ public class BoardController {
 	
 	@PostMapping("/write")
 	public String insert(@ModelAttribute BoardDto boardDto, HttpSession session) {
-		String boardWriter = (String) session.getAttribute("name"); //세션에 있는 memberId를 가져옴
+		String memberId = (String) session.getAttribute("name"); //세션에 있는 memberId를 가져옴
 		int boardNo = boardDao.sequence(); //시퀀스 번호 가져옴
 		boardDto.setBoardNo(boardNo); //보드 번호 넣음
-		boardDto.setBoardWriter(boardWriter); //보드 작성자 넣음
-		boardDao.insert(boardDto); //입력
+		boardDto.setBoardWriter(memberId); //보드 작성자 넣음
+		Integer lastNo = boardDao.selectMax(memberId); //이 사용자의 마지막 글번호를 조회		
+		boardDao.insert(boardDto); //글을 등록하고
+		
+		//포인트 계산 작업
+		//- lastNo가 null이라는 것은 처음 글을 작성했다는 의미
+		//- lastNo가 null이 아니면 조회한 다음 시간차를 비교
+		
+		if(lastNo == null) { //처음이라면
+			memberDao.increaseMemberPoint(memberId, 10); // 10점 부여
+		} else { //처음은 아닌데 마지막 글을 작성한지 5분이 넘었는지 시간 차이를 계산
+			BoardDto lastDto = boardDao.selectOne(lastNo);
+			Timestamp stamp = new Timestamp(lastDto.getBoardCtime().getTime()); //작성시간 구하기
+			LocalDateTime lastTime = stamp.toLocalDateTime(); //로컬데이트타임으로 변환
+			LocalDateTime currentTime = LocalDateTime.now(); //현재시간 구하기
+			
+			Duration duration = Duration.between(lastTime, currentTime);
+			long seconds = duration.getSeconds();
+			if (seconds > 300) { //시간차가 300초보다 크다면(5분 초과)
+				memberDao.increaseMemberPoint(memberId, 10); // 10점 부여
+			}
+		}
+		
 		return "redirect:detail?boardNo=" + boardNo;
 	}
 	

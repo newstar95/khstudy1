@@ -14,4 +14,10 @@ public interface MemberDao {
 	boolean updateMemberInfo(MemberDto memberDto);
 	boolean delete(String memberId);
 	
+//	boolean updateMemberPoint(String memberId); //어떠한 경우에도 부르면 n점 (ex 조회수)
+	boolean increaseMemberPoint(String memberId, int point); 
+//	boolean decreaseMemberPoint(String memberId, int point); 
+	
+	
+	
 }

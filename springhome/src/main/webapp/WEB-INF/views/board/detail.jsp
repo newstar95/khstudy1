@@ -10,7 +10,7 @@
 <table border="1" width="600">
 	<tr>
 		<th width="25%">작성자</th>
-		<td>${boardDto.boardWriter}</td>
+		<td>${boardDto.boardWriterString}</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="right">

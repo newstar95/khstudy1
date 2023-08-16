@@ -31,9 +31,28 @@
 				<a href="detail?boardNo=${boardDto.boardNo}">
 					${boardDto.boardTitle}
 				</a>
+				
+				<!-- 댓글이 있다면 개수를 표시 -->
+				<c:if test="${boardDto.boardReplycount > 0}">
+				[${boardDto.boardReplycount}]
+				</c:if>
 			</td>
-			<td>${boardDto.boardWriter}</td>
-			<td>${boardDto.boardCtime}</td>
+			
+			<%-- 
+			사용자ㄷ가 없으면 탈퇴한 사용자로 표시 
+			<c:choose>
+				<c:when test = "${boardDto.boardWriter != null}">
+						<td>${boardDto.boardWriter}</td>
+				</c:when>
+				<c:otherwise>
+					<td>(탈퇴한 사용자)</td>
+				</c:otherwise>
+			</c:choose>
+			--%>
+			
+			<td>${boardDto.getBoardWriterString()}</td>
+			
+			<td>${boardDto.boardCtimeString}</td>
 			<td>${boardDto.boardReadcount}</td>
 			<td>${boardDto.boardLikecount}</td>
 		</tr>

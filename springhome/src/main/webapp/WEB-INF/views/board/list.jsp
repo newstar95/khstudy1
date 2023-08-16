@@ -1,44 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<h1>자유 게시판</h1>
-<h2>타인에 대한 비방은 경고 없이 삭제됩니다</h2>
+<h2>자유 게시판</h2>
 
-<table border="1" width="700">
+<%-- 글쓰기는 로그인 상태인 경우에만 출력 --%>
+<c:if test="${sessionScope.name != null}">
+<h3><a href = "write">글쓰기</a></h3>
+</c:if>
+
+<table border="1" width="800">
 	<thead>
 		<tr>
-			<th>글번호</th>
+			<th>번호</th>
+			<th width="40%">제목</th>
 			<th>작성자</th>
-			<th>제목</th>
+			<th>작성일</th>
 			<th>조회수</th>
 			<th>좋아요</th>
-			<th>댓글수</th>
-			<th>작성일</th>
-			<th>수정일</th>
 		</tr>
 	</thead>
-	<tbody>
-	<c:forEach var="boardDto" items="${list}">
+	<tbody align="center">
+		<c:forEach var="boardDto" items="${list}">
 		<tr>
 			<td>${boardDto.boardNo}</td>
-			<td>${boardDto.boardWriter}</td>
-			<td>
-				<a href = "detail?boardNo=${boardDto.boardNo}">
+			<td align="left">
+				<!-- 제목을 누르면 상세페이지로 이동 -->
+				<a href="detail?boardNo=${boardDto.boardNo}">
 					${boardDto.boardTitle}
 				</a>
 			</td>
+			<td>${boardDto.boardWriter}</td>
+			<td>${boardDto.boardCtime}</td>
 			<td>${boardDto.boardReadcount}</td>
 			<td>${boardDto.boardLikecount}</td>
-			<td>${boardDto.boardReplycount}</td>
-			<td>${boardDto.boardCtime}</td>
-			<td>${boardDto.boardUtime}</td>
 		</tr>
-	</c:forEach>
+		</c:forEach>
 	</tbody>
 </table>
-<h3><a href = "write">글쓰기</a></h3>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

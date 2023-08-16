@@ -17,6 +17,7 @@ import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.dto.MemberDto;
+import com.kh.springhome.error.NoTargetException;
 
 @Controller
 @RequestMapping("/board")
@@ -44,24 +45,31 @@ public class BoardController {
 	
 	@RequestMapping("/detail")
 	public String detail(@RequestParam int boardNo, Model model) {
+//		if() {
+			boardDao.updateReadcount(boardNo); //조회수
+//		}
 		BoardDto boardDto = boardDao.selectOne(boardNo);
 		model.addAttribute("boardDto", boardDto);
-		boardDao.updateReadcount(boardDto.getBoardNo()); //조회수
 		return  "/WEB-INF/views/board/detail.jsp";
 	}
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
-		List<BoardDto> list = boardDao.selectList();
-		model.addAttribute("list", list);
+//		List<BoardDto> list = boardDao.selectList();
+//		model.addAttribute("list", list);
+		model.addAttribute("list", boardDao.selectList());
 		return "/WEB-INF/views/board/list.jsp";
 	}
 	
 	@RequestMapping("/delete")
 	public String delete(@RequestParam int boardNo) {
-		boardDao.delete(boardNo);
-		return "redirect:list";
+		boolean result = boardDao.delete(boardNo);
+		if (result) {
+			return "redirect:list";
+		} else {
+			throw new NoTargetException("없는 게시글 번호");
 		}
+	}
 	
 	@GetMapping("/edit")
 	public String edit(@RequestParam int boardNo, Model model) {
@@ -72,9 +80,13 @@ public class BoardController {
 	
 	@PostMapping("/edit")
 	public String edit(@ModelAttribute BoardDto boardDto) {
-		boardDao.update(boardDto);
-		boardDao.updateUtime(boardDto.getBoardNo()); //수정일 입력
-		return "redirect:detail?boardNo="+ boardDto.getBoardNo();
+		boolean result = boardDao.update(boardDto);
+//		boardDao.updateUtime(boardDto.getBoardNo()); //수정일 입력
+		if (result) {
+			return "redirect:detail?boardNo="+ boardDto.getBoardNo();
+		}
+		else {
+			throw new NoTargetException("존재하지 않는 글번호입니다.");
+		}
 	}
-	
 }

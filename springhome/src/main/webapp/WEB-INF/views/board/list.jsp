@@ -25,29 +25,32 @@
 			<th>작성일</th>
 			<th>조회수</th>
 			<th>좋아요</th>
+			<th>그룹</th>
+			<th>상위</th>
+			<th>차수</th>
 		</tr>
 	</thead>
 	<tbody align="center">
-		<c:forEach var="boardDto" items="${list}">
+		<c:forEach var="boardListDto" items="${list}">
 		<tr>
-			<td>${boardDto.boardNo}</td>
+			<td>${boardListDto.boardNo}</td>
 			<td align="left">
 				<!-- 제목을 누르면 상세페이지로 이동 -->
-				<a href="detail?boardNo=${boardDto.boardNo}">
-					${boardDto.boardTitle}
+				<a href="detail?boardNo=${boardListDto.boardNo}">
+					${boardListDto.boardTitle}
 				</a>
 				
 				<!-- 댓글이 있다면 개수를 표시 -->
-				<c:if test="${boardDto.boardReplycount > 0}">
-				[${boardDto.boardReplycount}]
+				<c:if test="${boardListDto.boardReplycount > 0}">
+				[${boardListDto.boardReplycount}]
 				</c:if>
 			</td>
 			
 			<%-- 
 			사용자ㄷ가 없으면 탈퇴한 사용자로 표시 
 			<c:choose>
-				<c:when test = "${boardDto.boardWriter != null}">
-						<td>${boardDto.boardWriter}</td>
+				<c:when test = "${boardListDto.boardWriter != null}">
+						<td>${boardListDto.boardWriter}</td>
 				</c:when>
 				<c:otherwise>
 					<td>(탈퇴한 사용자)</td>
@@ -55,11 +58,14 @@
 			</c:choose>
 			--%>
 			
-			<td>${boardDto.getBoardWriterString()}</td>
+			<td>${boardListDto.getBoardWriterString()}</td>
 			
-			<td>${boardDto.boardCtimeString}</td>
-			<td>${boardDto.boardReadcount}</td>
-			<td>${boardDto.boardLikecount}</td>
+			<td>${boardListDto.boardCtimeString}</td>
+			<td>${boardListDto.boardReadcount}</td>
+			<td>${boardListDto.boardLikecount}</td>
+			<td>${boardListDto.boardGroup}</td>
+			<td>${boardListDto.boardParent}</td>
+			<td>${boardListDto.boardDepth}</td>
 		</tr>
 		</c:forEach>
 	</tbody>

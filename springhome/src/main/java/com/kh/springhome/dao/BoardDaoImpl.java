@@ -47,10 +47,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<BoardListDto> selectList() {
-		String sql = "select "
-				+ "board_no, board_writer, board_title, board_readcount, board_likecount, board_replycount, "
-				+ "board_replycount, board_ctime, board_utime from "
-				+ "board order by board_no desc";
+		String sql = "select * from board_list order by board_no desc";
 		return jdbcTemplate.query(sql, boardListMapper);
 	}
 
@@ -111,7 +108,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<BoardListDto> selectList(String type, String keyword) {
-		String sql  = "select * from board "
+		String sql  = "select * from board_list "
 					+ "where instr(" +type+", ?) > 0 "
 					+ "order by board_no desc";
 		

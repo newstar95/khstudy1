@@ -35,7 +35,18 @@
 		<tr>
 			<td>${boardListDto.boardNo}</td>
 			<td align="left">
-				<!-- 제목을 누르면 상세페이지로 이동 -->
+				
+				<%-- for(int i=1; i <= 차수; i++) --%>
+				<c:forEach var = "i" begin="1" end="${boardListDto.boardDepth}" step="1">
+					&nbsp;&nbsp; 
+				</c:forEach>
+				
+				<%-- 띄어쓰기 뒤에 화살표 표시 --%>
+				<c:if test="${boardListDto.boardDepth > 0}"> <!-- 차수가 0보다 크면 -->
+					<img src="/images/reply.png" width="15" height="15">
+				</c:if>
+				
+				<%-- 제목을 누르면 상세페이지로 이동 --%>
 				<a href="detail?boardNo=${boardListDto.boardNo}">
 					${boardListDto.boardTitle}
 				</a>

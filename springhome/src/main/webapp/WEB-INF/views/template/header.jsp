@@ -26,10 +26,9 @@
 	 <%-- 세션에 저장된 name이라는 이름의 값으로 회원/비회원 구분 --%>
 	 
 	 <%-- 브라우저가 같으면 같은 세션이다. 자동으로 번호에 맞게 관리됨, 세션이 브라우저 단위로 관리됨  --%>
-	 
+	 <a href="/">홈</a>
 	 <c:choose>
 	 	<c:when test="${sessionScope.name != null}">
-		 	<a href="/">홈</a>
 		 	<a href="/member/mypage">마이페이지</a>
 		 	<a href="/member/logout">로그아웃</a>
 			<a href="/board/list">게시판</a>

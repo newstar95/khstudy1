@@ -1,20 +1,20 @@
 package com.kh.springhome.mapper;
 
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.BoardListDto;
 
 @Component
-public class BoardListMapper implements RowMapper<BoardDto>  {
+public class BoardListMapper implements RowMapper<BoardListDto>  {
 
 	@Override
-	public BoardDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-		BoardDto boardListDto = new BoardDto();
+	public BoardListDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+		BoardListDto boardListDto = new BoardListDto();
 		boardListDto.setBoardNo(rs.getInt("board_no"));
 		boardListDto.setBoardWriter(rs.getString("board_writer"));
 		boardListDto.setBoardTitle(rs.getString("board_title"));
@@ -23,6 +23,8 @@ public class BoardListMapper implements RowMapper<BoardDto>  {
 		boardListDto.setBoardReplycount(rs.getInt("board_replycount"));
 		boardListDto.setBoardCtime(rs.getDate("board_ctime"));
 		boardListDto.setBoardUtime(rs.getDate("board_utime"));
+		
+		boardListDto.setMemberNickname(rs.getString("member_nickname"));
 		return boardListDto;
 	}
 	

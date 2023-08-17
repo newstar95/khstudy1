@@ -3,9 +3,7 @@ package com.kh.springhome.controller;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.NoTargetException;
 
@@ -98,11 +97,11 @@ public class BoardController {
 		boolean isSearch = type != null && keyword != null; //type과 keyword가 둘 다 null이 아니라면
 		
 		if(isSearch) { //검색일 경우
-			List<BoardDto> list = boardDao.selectList(type, keyword);
+			List<BoardListDto> list = boardDao.selectList(type, keyword);
 			model.addAttribute("list", list);
 			model.addAttribute("isSearch", true); //화면에 넘겨주고 싶다면
 		} else { //목록일 경우
-			List<BoardDto> list = boardDao.selectList();
+			List<BoardListDto> list = boardDao.selectList();
 			model.addAttribute("list", list);
 			model.addAttribute("isSearch", false);
 		}

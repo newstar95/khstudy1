@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.mapper.BoardListMapper;
 import com.kh.springhome.mapper.BoardMapper;
 
@@ -45,7 +46,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<BoardDto> selectList() {
+	public List<BoardListDto> selectList() {
 		String sql = "select "
 				+ "board_no, board_writer, board_title, board_readcount, board_likecount, board_replycount, "
 				+ "board_replycount, board_ctime, board_utime from "
@@ -109,7 +110,7 @@ public class BoardDaoImpl implements BoardDao {
 //	}
 
 	@Override
-	public List<BoardDto> selectList(String type, String keyword) {
+	public List<BoardListDto> selectList(String type, String keyword) {
 		String sql  = "select * from board "
 					+ "where instr(" +type+", ?) > 0 "
 					+ "order by board_no desc";

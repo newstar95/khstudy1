@@ -124,6 +124,20 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "1") int page) {
 		boolean isSearch = type != null && keyword != null; //type과 keyword가 둘 다 null이 아니라면
 		
+		//페이징과 관련된 값들을 계산하여 JSP로 전달
+		int begin = (page - 1) / 10 * 10 + 1;
+		int end = begin + 9;
+		
+		//지금 상황에 해당하는 전체 데이터 개수
+		//int count = 목록 개수 or 검색 결과수;
+		//int count = isSearch ? 검색결과수 : 목록개수; 
+		int count = isSearch ? boardDao.countList(type, keyword) : boardDao.countList(); 
+		int pageCount = (count-1) / 10+1;
+		model.addAttribute("page", page);
+		model.addAttribute("begin", begin);
+		model.addAttribute("end", Math.min(pageCount, end));
+		model.addAttribute("pageCount", pageCount);
+		
 		if(isSearch) { //검색일 경우
 			//List<BoardListDto> list = boardDao.selectList(type, keyword);
 			List<BoardListDto> list = boardDao.selectListByPage(type, keyword, page);

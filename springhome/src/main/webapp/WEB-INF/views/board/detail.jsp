@@ -51,7 +51,7 @@
 		<%-- 회원일 때만 글쓰기, 수정, 삭제가 나와야 한다 --%>
 		<c:if test="${sessionScope.name != null}">
 			<a href="write">글쓰기</a>
-			<a href="#">답글쓰기</a>
+			<a href="write?boardParent=${boardDto.boardNo}">답글쓰기</a>
 			
 			<%-- 수정/삭제는 소유자일 경우만 나와야 한다 --%>
 			<c:if test="${sessionScope.name == boardDto.boardWriter}">

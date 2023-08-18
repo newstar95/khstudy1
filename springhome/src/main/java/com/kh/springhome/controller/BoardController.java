@@ -115,18 +115,24 @@ public class BoardController {
 	//- 목록일 경우에는 type과 keyword라는 파라미터가 존재
 	//- 만약 불완전한 상태(type이나 keyword만 있는 경우)라면 목록으로 처리
 	
+	//-(추가) 페이징 관련 처리
+	
 	@RequestMapping("/list")
 	public String list(Model model, 
 			@RequestParam(required = false) String type, //파라미터가 있을 수도 있고 없을 수도 있다.
-			@RequestParam(required = false) String keyword) {
+			@RequestParam(required = false) String keyword,
+			@RequestParam(required = false, defaultValue = "1") int page) {
 		boolean isSearch = type != null && keyword != null; //type과 keyword가 둘 다 null이 아니라면
 		
 		if(isSearch) { //검색일 경우
-			List<BoardListDto> list = boardDao.selectList(type, keyword);
+			//List<BoardListDto> list = boardDao.selectList(type, keyword);
+			List<BoardListDto> list = boardDao.selectListByPage(type, keyword, page);
 			model.addAttribute("list", list);
 			model.addAttribute("isSearch", true); //화면에 넘겨주고 싶다면
-		} else { //목록일 경우
-			List<BoardListDto> list = boardDao.selectList();
+		} 
+		else { //목록일 경우
+			//List<BoardListDto> list = boardDao.selectList();
+			List<BoardListDto> list = boardDao.selectListByPage(page);
 			model.addAttribute("list", list);
 			model.addAttribute("isSearch", false);
 		}

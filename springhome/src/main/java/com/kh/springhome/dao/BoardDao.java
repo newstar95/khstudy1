@@ -16,4 +16,7 @@ public interface BoardDao {
 	Integer selectMax(String boardWriter); //이 작성자가 쓴 마지막 글 번호를 알려줌
 	List<BoardListDto> selectList(String type, String keyword);
 	List<BoardListDto> selectList();
+	
+	List<BoardListDto> selectListByPage(int page);
+	List<BoardListDto> selectListByPage(String type, String keyword, int page);
 }

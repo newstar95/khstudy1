@@ -90,6 +90,7 @@ public class MemberDaoImpl implements MemberDao {
 		Object[] data = {point, memberId};
 		return jdbcTemplate.update(sql,data) > 0;
 	}
+
 }
 
 

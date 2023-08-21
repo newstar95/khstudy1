@@ -22,6 +22,7 @@ import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.NoTargetException;
+import com.kh.springhome.vo.PaginationVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -117,40 +118,55 @@ public class BoardController {
 	
 	//-(추가) 페이징 관련 처리
 	
+//	@RequestMapping("/list")
+//	public String list(Model model, 
+//			@RequestParam(required = false) String type, //파라미터가 있을 수도 있고 없을 수도 있다.
+//			@RequestParam(required = false) String keyword,
+//			@RequestParam(required = false, defaultValue = "1") int page) {
+//		boolean isSearch = type != null && keyword != null; //type과 keyword가 둘 다 null이 아니라면
+//		
+//		//페이징과 관련된 값들을 계산하여 JSP로 전달
+//		int begin = (page - 1) / 10 * 10 + 1;
+//		int end = begin + 9;
+//		
+//		//지금 상황에 해당하는 전체 데이터 개수
+//		//int count = 목록 개수 or 검색 결과수;
+//		//int count = isSearch ? 검색결과수 : 목록개수; 
+//		int count = isSearch ? boardDao.countList(type, keyword) : boardDao.countList(); 
+//		int pageCount = (count-1) / 10+1;
+//		model.addAttribute("page", page);
+//		model.addAttribute("begin", begin);
+//		model.addAttribute("end", Math.min(pageCount, end));
+//		model.addAttribute("pageCount", pageCount);
+//		
+//		if(isSearch) { //검색일 경우
+//			//List<BoardListDto> list = boardDao.selectList(type, keyword);
+//			List<BoardListDto> list = boardDao.selectListByPage(type, keyword, page);
+//			model.addAttribute("list", list);
+//			model.addAttribute("isSearch", true); //화면에 넘겨주고 싶다면
+//		} 
+//		else { //목록일 경우
+//			//List<BoardListDto> list = boardDao.selectList();
+//			List<BoardListDto> list = boardDao.selectListByPage(page);
+//			model.addAttribute("list", list);
+//			model.addAttribute("isSearch", false);
+//		}
+//		return "/WEB-INF/views/board/list.jsp";
+//	}
+	
+//	(추가) @ModelAttribute로 받은 데이터는 이름만 정하면 자동으로 화면으로 넘어간다
+//	- @ModelAttribute(name="vo")는 model.addAttribute("vo", ??)와 같다
 	@RequestMapping("/list")
-	public String list(Model model, 
-			@RequestParam(required = false) String type, //파라미터가 있을 수도 있고 없을 수도 있다.
-			@RequestParam(required = false) String keyword,
-			@RequestParam(required = false, defaultValue = "1") int page) {
-		boolean isSearch = type != null && keyword != null; //type과 keyword가 둘 다 null이 아니라면
+	public String list(@ModelAttribute(name = "vo") PaginationVO vo,
+									Model model) {
+		int count = boardDao.countList(vo);
+		vo.setCount(count);
+//		model.addAttribute("vo", vo);
+
+		List<BoardListDto> list = boardDao.selectListByPage(vo);
+		model.addAttribute("list", list);
 		
-		//페이징과 관련된 값들을 계산하여 JSP로 전달
-		int begin = (page - 1) / 10 * 10 + 1;
-		int end = begin + 9;
-		
-		//지금 상황에 해당하는 전체 데이터 개수
-		//int count = 목록 개수 or 검색 결과수;
-		//int count = isSearch ? 검색결과수 : 목록개수; 
-		int count = isSearch ? boardDao.countList(type, keyword) : boardDao.countList(); 
-		int pageCount = (count-1) / 10+1;
-		model.addAttribute("page", page);
-		model.addAttribute("begin", begin);
-		model.addAttribute("end", Math.min(pageCount, end));
-		model.addAttribute("pageCount", pageCount);
-		
-		if(isSearch) { //검색일 경우
-			//List<BoardListDto> list = boardDao.selectList(type, keyword);
-			List<BoardListDto> list = boardDao.selectListByPage(type, keyword, page);
-			model.addAttribute("list", list);
-			model.addAttribute("isSearch", true); //화면에 넘겨주고 싶다면
-		} 
-		else { //목록일 경우
-			//List<BoardListDto> list = boardDao.selectList();
-			List<BoardListDto> list = boardDao.selectListByPage(page);
-			model.addAttribute("list", list);
-			model.addAttribute("isSearch", false);
-		}
-		return "/WEB-INF/views/board/list.jsp";
+		return "/WEB-INF/views/board/list2.jsp";
 	}
 	
 		//- 만약 소유자 검사를 추가한다면

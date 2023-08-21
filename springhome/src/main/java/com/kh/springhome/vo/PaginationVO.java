@@ -27,15 +27,6 @@ public class PaginationVO {
 		return getBegin() == 1;
 	}
 	
-	public String getPrevQueryString() {
-		if(isSearch()) {//검색
-			return "page="+(getBegin()-1)+"&type="+type+"&keyword="+keyword;
-		}
-		else {//목록
-			return "page="+(getBegin()-1);
-		}
-	}
-	
 	public int getPageCount() {
 		return (count-1) / size + 1;
 	}
@@ -46,19 +37,36 @@ public class PaginationVO {
 	
 	public String getNextQueryString() {
 		if(isSearch()) {//검색
-			return "page="+(getEnd()+1)+"&type="+type+"&keyword="+keyword;
+			return "page="+(getEnd()+1)+"&size="+size+"&type="+type+"&keyword="+keyword;
 		}
 		else {//목록
-			return "page="+(getEnd()+1);
+			return "page="+(getEnd()+1)+"&size="+size;
 		}
 	}
 	
 	public String getQueryString(int page) {
 		if(isSearch()) {//검색
-			return "page="+page+"&type="+type+"&keyword="+keyword;
+			return "page="+page+"&size="+size+"&type="+type+"&keyword="+keyword;
 		}
 		else {//목록
-			return "page="+page;
+			return "page="+page+"&size="+size;
 		}
+	}
+	
+	public String getPrevQueryString() {
+		if(isSearch()) {//검색
+			return "page="+(getBegin()-1)+"&size="+size+"&type="+type+"&keyword="+keyword;
+		}
+		else {//목록
+			return "page="+(getBegin()-1)+"&size="+size;
+		}
+	}
+	
+	public int getStartRow() {
+		return getFinishRow() - (size-1);
+	}
+	
+	public int getFinishRow() {
+		return page * size;
 	}
 }

@@ -70,11 +70,17 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public boolean update(BoardDto boardDto) {
-		String sql = "update board set board_title=?, board_content=? where board_no=?";
+		String sql = "update board "
+						+ "set "
+							+ "board_title=?, "
+							+ "board_content=?, "
+							+ "board_utime=sysdate "
+						+ "where board_no=?";
 		Object[] data = {
-				boardDto.getBoardTitle(), boardDto.getBoardContent(), boardDto.getBoardNo()
+			boardDto.getBoardTitle(), boardDto.getBoardContent(),
+			boardDto.getBoardNo()
 		};
-		return jdbcTemplate.update(sql,data) > 0;
+		return jdbcTemplate.update(sql, data) > 0;
 	}
 
 	@Override
@@ -198,11 +204,39 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public List<BoardListDto> selectListByPage(PaginationVO vo) {
 		if(vo.isSearch()) {
-			return selectListByPage(vo.getType(), vo.getKeyword(), vo.getPage());
+			String sql = "select * from ("
+					+ "select rownum rn, TMP.* from ("
+					+"select * from board_list "
+					+ "where instr("+vo.getType()+", ?) > 0 "
+					+ "connect by prior board_no=board_parent "
+					+ "start with board_parent is null "
+					+ "order siblings by board_group desc, board_no asc"
+					+ ")TMP"
+					+ ") where rn between ? and ?";
+			Object[] data = {vo.getKeyword(), vo.getStartRow(), vo.getFinishRow()};
+			return jdbcTemplate.query(sql, boardListMapper, data);
 		}
 		else {
-			return selectListByPage(vo.getPage());
+			String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+									+ "select * from board_list "
+									+ "connect by prior board_no=board_parent "
+									+ "start with board_parent is null "
+									+ "order siblings by board_group desc, board_no asc"
+								+ ")TMP"
+							+ ") where rn between ? and ?";
+			Object[] data = {vo.getStartRow(), vo.getFinishRow()};
+			return jdbcTemplate.query(sql, boardListMapper, data);
 		}
 	}
-	
+
+	@Override
+	public List<BoardListDto> selectListByBoardWriter(String boardWriter) {
+		String sql = "select * from board_list "
+				+ "where board_writer = ? " 
+				+ "order by board_no desc";
+		Object[] data = {boardWriter};
+		return jdbcTemplate.query(sql, boardListMapper, data);
+	}
 }
+

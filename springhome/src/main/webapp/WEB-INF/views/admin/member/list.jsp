@@ -72,6 +72,7 @@
 			<th>이메일</th>
 			<th>생년월일</th>
 			<th>등급</th>
+			<td>메뉴</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -83,6 +84,11 @@
 			<td>${memberDto.memberEmail}</td>
 			<td>${memberDto.memberBirth}</td>
 			<td>${memberDto.memberLevel}</td>
+			<td>
+			<a href ="detail?memberId=${memberDto.memberId}">상세</a>
+			<a href = "edit?memberId=${memberDto.memberId}">수정</a>
+			<a href = "#">차단</a>
+			</td>
 		</tr>
 		</c:forEach>
 	</tbody>

@@ -13,6 +13,7 @@ public interface MemberDao {
 	boolean updateMemberLogin(String memberId);
 	boolean updateMemberPw(String memberId, String changePw);
 	boolean updateMemberInfo(MemberDto memberDto);
+	boolean updateMemberInfoByAdmin(MemberDto memberDto);
 	boolean delete(String memberId);
 	
 //	boolean updateMemberPoint(String memberId); //어떠한 경우에도 부르면 n점 (ex 조회수)

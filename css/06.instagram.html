@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instagram</title>
+    <style>
+        /*
+        제일 먼저 해야할 것
+        - 폭 설정 기준 정하기
+        - 글꼴 설정
+        */
+        * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        img {
+            display: block;
+            width: 150px;
+            height: 65px;
+            margin: 20px 0px;
+        }
+        div {
+
+        }
+        input {
+            display: block;
+            width: 250px;
+            padding: 0.5em;
+            margin: 5px 0px;
+            border-radius: 2px;
+            border-color: lightgray;
+            border-width: 1px;
+            border-style: solid;
+        }
+        button {
+            display: block;
+            width: 250px;
+            padding: 0.5em;
+            margin: 15px 0px;
+            color: white;
+            background-color:rgb(76, 181, 249);
+            border-radius: 7px;
+            border: none;
+            font-size: 13px;
+        }
+        a {
+            display: block;
+            width: 250px;
+            font-family: sans-serif;
+            font-size: 13px;
+            padding: 0.5em;
+            margin: 5px 0px;
+            text-decoration: none;
+            color: cadetblue;
+        }
+        hr {
+            width: 250px;
+            margin: 15px 0px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post" autocomplete="off">
+        <div align = "center">
+            <img   width= "20%" src = "./images/instagram_logo.png"> 
+            <input type="text" name="memberId" placeholder="전화번호, 사용자 이름 또는 이메일">
+            <input type="password" name="memberPw" placeholder="비밀번호" >
+            <button>로그인</button>
+            <hr>
+            <a href="#">비밀번호를 잊으셨나요?</a>
+        </div>
+    </form>
+</body>
+</html>

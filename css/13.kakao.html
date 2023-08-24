@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kakao</title>
+    <!-- css 파일을 불러오는 코드 -->
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+         /*
+      입력창의 변형(확장) 스타일
+      - 기본 스타일에 옵션을 추가하듯이 추가 클래스를 작성하여 적용
+      */
+
+      /*
+        2개 클래스가 모두 적용된 경우만 디자인하도록 설정
+      */
+      .form-input.form-underline {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        padding-left: 0px;
+        padding-right: 0px;
+
+      }
+
+      .form-input, 
+      .btn {
+        font-size: 14px;
+        padding: 0.5em;
+        outline: none; 
+        border: 1px solid #636e72;
+        border-radius: 0.3em;
+        font-weight: 600;
+
+      }
+
+      .form-input {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        color:#636e72;
+        margin-top: 10px;
+      }
+
+      .form-input:focus {
+        border-color: #2d3436;
+      }
+      .btn {
+        border-color: rgb(255,229,2);
+        background-color: rgb(255,229,2);
+        color: #202020;
+        cursor: pointer;
+        height: 45px;
+      }
+      .btn:hover { 
+            filter: brightness(95%); 
+      }
+      .qr {
+        border-color: rgb(242,240,242);
+        background-color: rgb(242,240,242);
+        margin-top: 10px;
+      }
+      .login {
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      .hr {
+        border-color: rgb(242,240,242);
+        border: 1px solid rgb(242,240,242);
+        margin-top: 10px;
+      }
+
+    </style>
+</head>
+<body>
+     <form action="#" method="post" autocomplete="off">
+        <div class="container w-400">
+            <div class="row">
+                <img src = "images/kakao_logo.png" width="80">
+            </div>
+            <div class="row">
+                <input type="text" name="memberId" class="form-input w-100 form-underline" placeholder="카카오메일 아이디, 이메일, 전화번호">
+            </div>
+            <div class="row">
+                <input type ="password" name="memberPw" class="form-input w-100 form-underline" placeholder="비밀번호">
+            </div>
+            <div class="row">
+                <button class="btn w-100 login">로그인</button>
+            </div>
+            <div class="row">
+                <hr class="hr w-100">
+            </div>
+            <div class="row">
+              <button class="btn qr w-100">QR코드 로그인</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

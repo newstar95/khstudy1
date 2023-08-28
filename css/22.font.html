@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폰트 설정</title>
+    <!-- css 파일을 불러오는 코드 -->
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <link rel="stylesheet" type="text/css" href="test.css">
+
+    <!-- 구글 웹 폰트를 사용한 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <style>
+        .f1 {
+            /* 그냥 글꼴을 설정하면 글꼴이 존재하는 PC에서만 정상 출력 */
+            font-family: 빙그레 메로나체, sans-serif;
+        }
+
+        /*
+            웹 폰트(Web Font)
+            - 글꼴 파일을 홈페이지에 내장시키는 방식
+            - 글꼴 파일은 확장자가 ttf(True Type Font) 또는 otf(Open Type Font)
+            - 등록을 위해 @font-face 사용
+            @가 들어간 도구들은 재사용이 가능한 심화css
+        */
+        @font-face {
+            /* font-family: 등록할 이름;
+            src: 파일의 위치 */
+
+            font-family: poorStory;
+            src: url(./fonts/PoorStory-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: nanumPen;
+            src: url(./fonts/NanumPenScript-Regular.ttf);
+        }
+
+        .f2 {
+            font-family: poorStory;
+        }
+
+        .f3 {
+            font-family: nanumPen;
+        }
+
+        .f4 {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        .f5 {
+            font-family: 'Bagel Fat One', cursive;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container w-400">
+        <div class="row">
+            <h1>Font 설정</h1>
+        </div>
+        <div class="row f1">
+            가나다라마바사<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789<br>
+            !@#$%^&*
+        </div>
+        <div class="row f2">
+            가나다라마바사<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789<br>
+            !@#$%^&*
+        </div>
+        <div class="row f3">
+            가나다라마바사<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789<br>
+            !@#$%^&*
+        </div>
+        <div class="row f4">
+            가나다라마바사<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789<br>
+            !@#$%^&*
+        </div>
+        <div class="row f5">
+            가나다라마바사<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789<br>
+            !@#$%^&*
+        </div>
+    </div>
+</body>
+</html>

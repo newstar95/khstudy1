@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 실습</title>
+
+    <!-- 구글 웹 폰트를 사용을 위한 CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <!-- 아이콘 사용을 위한 Font Awesome 6 CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   
+    <!-- 내가 만든 CSS 파일을 불러오는 코드 -->
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <link rel="stylesheet" type="text/css" href="test.css">
+    <style>
+        .dropdown {
+            width: 300px;
+        }
+
+        .dropdown > .btn {
+            transition: opacity 0.5s ease-out; /* 부드럽게 변경할 항목, 부드럽게 변경할 시간,  */
+        }
+
+        .dropdown > .btn:not(:first-child) {
+            opacity: 0;
+        }
+
+        /* 
+            ~ 은 뒤에 있는 모든 태그를 선택할 수 있다. 
+            +는 뒤에 있는 태그 한 개를 선택할 수 있다.
+        */
+
+        /* 드롭다운에 마우스가 올라간 상태에서 버튼의 첫 번째  */
+        .dropdown:hover> .btn:first-child ~ .btn {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <button class="btn w-100">종료하기</button>
+        <button class="btn btn-positive w-100" style="position:relative; top:0;">저장하고 종료하기</button>
+        <button class="btn btn-negative w-100">저장하지 않고 종료하기</button>
+    </div>
+</body>
+</html>

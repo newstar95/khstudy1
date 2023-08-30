@@ -6,6 +6,7 @@
 <h2>로그인</h2>
 
 <form action = "login" method="post" autocomplete="off">
+
 	<input type="text" name="memberId" placeholder="아이디" required><br><br>
 	<input type="password" name="memberPw" placeholder="비밀번호" required><br><br>
 	<button>Login</button>

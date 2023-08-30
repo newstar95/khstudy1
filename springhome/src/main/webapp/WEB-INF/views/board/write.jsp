@@ -41,7 +41,7 @@
         </div>
         <div class="row right">
             <button type="submit" class="btn btn-positive">글쓰기</button>
-            <a href="#" class="btn">목록보기</a>
+            <a href="#" class="btn">목록보기</a> 
         </div>
     </div>
 

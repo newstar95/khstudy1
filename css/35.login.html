@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+    <!-- 구글 웹 폰트를 사용을 위한 CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <!-- 아이콘 사용을 위한 Font Awesome 6 CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   
+    <!-- 내가 만든 CSS 파일을 불러오는 코드 -->
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <link rel="stylesheet" type="text/css" href="test.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container w-300">
+        <div class="row">
+            <h1 class="title blue">🧊 로그인 🧊</h1>
+        </div>
+        
+        <div class="row left mt-20">
+            <label for="id-input" class="blue">아이디 입력</label>
+            <input type="text" name="memberId" class= "form-input w-100 mt-10"
+                id="id-input">
+        </div>
+
+        <div class="row left mt-20">
+            <label class="blue">비밀번호 입력</label>
+            <input type="password" name="memberPw" class= "form-input w-100 mt-10">
+        </div>
+
+        <div class="row mt-20">
+            <button  type="submit" class= "btn btn-positive w-100">login</button>
+        </div>
+
+    </div>
+
+</body>
+</html>

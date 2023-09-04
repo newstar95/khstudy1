@@ -58,10 +58,64 @@
 
         function window05() {
             //window.open("주소", "ID", "새창 옵션");
-            //open("https://www.google.com", "", "width=500, height=500"); //무한 새창
-            open("https://www.google.com", "win1", "width=500, height=500"); //하나만 열림
+            //open("https://www.google.com", "_blank", "width=500, height=500"); //무한 새창
+            //open("https://www.google.com", "win1", "width=500, height=500"); //하나만 열림
+
+            //구글은 새창이 타겟팅되지 않음
+            window.open("https://www.melon.com/", "win", "popup"); //하나만 열림
         }
 
+        function location01() {
+            //console.log(window.location);
+            //console.log(location);
+            location.href = "https://www.google.com";
+        }
+
+        function location02() {
+            //ㄴconsole.log(window.location); //쓸 수 있는 지 없는 지 나온다.
+            location.reload();
+        }
+
+        function history01() { 
+            //console.log(window.history); 명령들을 확인 가능
+            history.back(); //history.go(-1);
+        }
+
+        function history02() {
+            history.go(-2);
+        }
+
+
+        //document.querySelector()는 가장 위에 있는 1개의 태그를 선택
+        //document.querySelectorAll()은 해당하는 모든 태그를 선택
+        function document01() {
+            // console.log(window.document);
+            // var tag = document.querySelector("h1"); //원치 않는 결과
+            // var tag = document.querySelector("#target");
+
+            // var tag = document.querySelectorAll(".temp"); // 자바의 배열이다.
+            // tag.style.color = "red"
+
+            var tag = document.querySelectorAll(".temp");
+            // tag[0].style.color = "red";
+
+            for(var i = 0; i < tag.length; i++){
+                tag[i].style.color = "red";
+            }
+        }
+
+        //document.getElementById(아이디) - 가장 중요!
+        //안 되는 브라우저가 없다는 것이 가장 좋은 점이지만 아이디가 있어야 한다는 것이 단점
+
+        //document.getElementsByClassName(클래스)
+        //document.getElementsByTagName(태그명)
+        function document02() {
+            var tag = document.getElementById("target"); //아이디는 유일하니까, 무조건 아이디니까 #을 쓰지 않음
+            tag.style.color = "red";
+
+            // var tag = document.getElementsByClassName("temp");
+            // tag[0].style.color = "red"; //안 쓴다. 이거 쓸 바에 querySelector 사용
+        }
      </script>
 </head>
 <body>
@@ -82,6 +136,39 @@
             <button onclick="window04();">새탭</button>
             <button onclick="window05();">새창</button>
         </div>
+
+        <div class="row left">
+            location은 window의 하위 객체이며 주소창과 새로고침버튼 등의 정보 및 제어 기능이 존재
+        </div>
+        <div class="row">
+            <button onclick="location01();">구글로 이동</button>
+            <button onclick="location02();">새로고침</button>
+        </div>
+
+        <div class="row left">
+            history는 window의 하위 객체이며
+            방문이력을 관리하며 뒤로 혹은 앞으로 이동 기능이 존재
+        </div>
+        <div class="row">
+            <button onclick="history01();">뒤로가기</button>
+            <button onclick="history02();">뒤로 2페이지 가기</button>
+        </div>
+
+        <div class="row left">
+            document는 window의 하위 객체이며 
+            문서를 제어할 수 있는 기능을 가지고 있다.
+        </div>
+        <div class="row">
+            <button onclick="document01();">선택하기(신버전)</button>
+            <button onclick="document02();">선택하기(구버전)</button>
+        </div>
+
+        <div class="row">
+            <h1 id="target" class="temp">선택 대상</h1>
+            <h1 id="target2" class="temp">선택 대상</h1>
+            
+        </div>
+
     </div>
 </body>
 </html>

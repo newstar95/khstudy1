@@ -684,8 +684,9 @@ textarea.form-input.fixed {
             border-color: #00b894 !important; 
             background-image: url("../images/valid.png");
             background-repeat: no-repeat;
-            background-position-x: right;
-            background-position-y: center;
+            /* background-position-x: right;
+            background-position-y: center; */
+            background-position: center right 1em;
             background-size: 1em;
         }
         .fail,
@@ -693,8 +694,9 @@ textarea.form-input.fixed {
             border-color: #d63031 !important;
             background-image: url("../images/invalid.png");
             background-repeat: no-repeat;
-            background-position-x: right;
-            background-position-y: center;
+            /* background-position-x: right;
+            background-position-y: center; */
+            background-position: center right 1em;
             background-size: 1em;
         }
 

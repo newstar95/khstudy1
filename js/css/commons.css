@@ -682,6 +682,8 @@ textarea.form-input.fixed {
         .success {
             /* !important 우선순위를 최상위로 올린다. */
             border-color: #00b894 !important; 
+        }
+        .success:not([type=date]) {
             background-image: url("../images/valid.png");
             background-repeat: no-repeat;
             /* background-position-x: right;

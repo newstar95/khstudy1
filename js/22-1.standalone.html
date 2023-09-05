@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독립형 자바스크립트</title>
+
+    <!-- 구글 웹 폰트를 사용을 위한 CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <!-- 아이콘 사용을 위한 Font Awesome 6 CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   
+    <!-- 내가 만든 CSS 파일을 불러오는 코드 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <link rel="stylesheet" type="text/css" href="./css/test.css">
+    <style>
+   
+    </style>
+
+     <!-- Javascript 작성 공간 -->
+     <script>
+        //목표 : 
+        //버튼을 누르면 안녕!이라는 alert이 뜨게 해보자!
+        //단, onclick 안 쓰고...
+
+        //1. 버튼을 선택한다.
+        //2. 버튼에 클릭 이벤트를 설정한다.
+        //3. 클릭 이벤트에서 함수를 실행한다.
+
+        //자바스크립트에서는 함수를 변수에 넣어놓을 수 있다.
+        //실행해 달라고 예약을 하게 되는 것
+
+        //모든 화면이 준비되면 init을 실행하도록 예약할게요(콜백:예약 실행, callback)
+        window.onload = function() { //익명함수라고 부른다.
+            var btn = document.querySelector(".btn");
+            //.btn 을 클릭하면 welcome 함수를 실행하도록 예약할게요
+            btn.onclick = function() {
+                alert("Hello!");
+            };
+        }; 
+        //화면에서 벌어질 모든 일에 대해서 예약을 거는 코드이다. 
+        //(15~20년 전 코드 스타일)
+        //이 구조의 문제점: 
+        //한 가지의 이벤트만 설정 가능하다. 
+        //내가 만든 것을 집어넣으면 남이 만든 것과 충돌이 생긴다.
+     </script>
+</head>
+<body>
+    <button class="btn">Click</button>
+</body>
+</html>

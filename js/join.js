@@ -17,12 +17,39 @@ $(function(){
         },
     };
 
-    $("[name=memberId]").blur(function(){
+    $("[name=memberId]").blur(function(e){
         var regex = /^[a-z][a-z0-9]{4,19}$/;
-        var isValid = regex.test($(this).val());
-        $(this).removeClass("success fail");
-        $(this).addClass(isValid ? "success" : "fail");
-        status.memberId = isValid;
+        var isValid = regex.test($(e.target).val());
+        
+        if(isValid) {//형식이 유효하다면
+            
+            $.ajax({
+                url:"http://localhost:8080/rest/member/idCheck",
+                method:"post",
+                // data : {memberId : e.target.value },
+                data : { memberId : $(e.target).val() },
+                success : function(response){
+                    $(e.target).removeClass("success fail fail2");
+                    if(response == "Y") {//사용가능
+                        $(e.target).addClass("success");
+                        status.memberId = true;
+                    }
+                    else {//사용불가(중복)
+                        $(e.target).addClass("fail2");
+                        status.memberId = false;
+                    }
+                },
+                error : function(){
+                    alert("서버와의 통신이 원활하지 않습니다");
+                },
+            });
+            
+        }
+        else {//형식이 유효하지 않다면(1차실패)
+            $(e.target).removeClass("success fail fail2");
+            $(e.target).addClass("fail");
+            status.memberId = false;
+        }
     });
     $("[name=memberPw]").blur(function(){
         var regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$])[A-Za-z0-9!@#$]{8,16}$/;
@@ -48,12 +75,39 @@ $(function(){
             status.memberPwCheck = false;
         }
     });
-    $("[name=memberNickname]").blur(function(){
+    $("[name=memberNickname]").blur(function(e){
         var regex = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9]{2,10}$/;
-        var isValid = regex.test($(this).val());
-        $(this).removeClass("success fail");
-        $(this).addClass(isValid ? "success" : "fail");
-        status.memberNickname = isValid;
+        var isValid = regex.test($(e.target).val());
+        
+        if(isValid) {//형식 통과
+
+            $.ajax({
+                url:"http://localhost:8080/rest/member/nicknameCheck",
+                method:"post",
+                // data:{ memberNickname : e.target.value },//JS
+                data : { memberNickname : $(e.target).val() },//jQuery
+                success : function(response){
+                    $(e.target).removeClass("success fail fail2");
+                    if(response == "Y") {//사용 가능한 닉네임
+                        $(e.target).addClass("success");
+                        status.memberNickname = true;
+                    }
+                    else {//이미 사용중인 닉네임
+                        $(e.target).addClass("fail2");
+                        status.memberNickname = false;
+                    }
+                },
+                error : function(){
+                    alert("서버와의 통신이 원활하지 않습니다");
+                },
+            });
+
+        }
+        else {//형식 오류
+            $(e.target).removeClass("success fail fail2");
+            $(e.target).addClass("fail");
+            status.memberNickname = false;
+        }
     });
     $("[name=memberEmail]").blur(function(){
         var regex = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;

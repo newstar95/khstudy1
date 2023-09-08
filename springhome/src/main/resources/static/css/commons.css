@@ -5,8 +5,9 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 /*
     컨테이너(Container)
@@ -73,9 +74,11 @@
 .form-input, 
 .btn 
 {
-    display: inline-block; /* a태그도 버튼처럼 */
-    text-decoration: none; /* a태그도 버튼처럼 */
+    /* a 태그 때문에 추가한 속성 */
+    display: inline-block;
+    text-decoration: none;
     vertical-align: bottom;
+
     font-size: 20px;
     padding: 0.5em 1em;
     outline: none; /*outline은 입력 창 선택 시 강조 효과 */
@@ -83,7 +86,6 @@
     border-radius: 0.1em;
     line-height: 1.2em;
 }
-
 .form-input:focus {/*선택된 상태를 focus라 한다 */
     border-color: #2d3436;
 }
@@ -123,12 +125,11 @@
 }
 
 /*
-    textarea는 크기 조정을 resize라는 속성으로 제어한다. 
+    textarea는 크기 조정을 resize라는 속성으로 제어한다
 */
-
 textarea.form-input {
-    resize: vertical; /* 수직 늘리기 허용 */
-    min-height: 6em;
+    resize: vertical;
+    min-height:6em;
 }
 textarea.form-input.fixed {
     resize: none;
@@ -216,86 +217,83 @@ textarea.form-input.fixed {
 .me-50 { margin-right: 50px;}
 
 
- /*
-            테이블 디자인
-            - 클래스가 table인 항목을 디자인
-            - 연계 선택자를 이용하여 대상을 제한해야 함
+/*
+    테이블 디자인
+    - 클래스가 table인 항목을 디자인
+    - 연계 선택자를 이용하여 대상을 제한해야 함
 
-            연계 선택자
-            [1] .table th - .table 안에 있는 모든 th를 의미 (후손선택자)
-            [2] .table > thead > tr > th - 직접적인 경로를 알려주어 th를 선택(자식선택자)
-        */
-        .table {
-            width:100%;
-            border-spacing: 0px;
-            border-collapse: collapse;
-        }
-        .table > thead > tr > th,
-        .table > thead > tr > td,
-        .table > tbody > tr > th, 
-        .table > tbody > tr > td, 
-        .table > tfoot > tr > th, 
-        .table > tfoot > tr > td 
-        {
-            padding:0.25em;
-        }
+    연계 선택자
+    [1] .table th - .table 안에 있는 모든 th를 의미 (후손선택자)
+    [2] .table > thead > tr > th - 직접적인 경로를 알려주어 th를 선택(자식선택자)
+*/
+.table {
+    width:100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th, 
+.table > tbody > tr > td, 
+.table > tfoot > tr > th, 
+.table > tfoot > tr > td 
+{
+    padding:0.25em;
+}
 
-        /*
-            확장 스타일 - 테두리가 있는 테이블
-        */
-        .table.table-border {
-            border: 1px solid #2d3436;
-        }
-        .table.table-border > thead > tr > th,
-        .table.table-border > thead > tr > td,
-        .table.table-border > tbody > tr > th, 
-        .table.table-border > tbody > tr > td, 
-        .table.table-border > tfoot > tr > th, 
-        .table.table-border > tfoot > tr > td
-        { 
-            border: 1px solid #2d3436;
-        }
+/*
+    확장 스타일 - 테두리가 있는 테이블
+*/
+.table.table-border {
+    border: 1px solid #2d3436;
+}
+.table.table-border > thead > tr > th,
+.table.table-border > thead > tr > td,
+.table.table-border > tbody > tr > th, 
+.table.table-border > tbody > tr > td, 
+.table.table-border > tfoot > tr > th, 
+.table.table-border > tfoot > tr > td
+{ 
+    border: 1px solid #2d3436;
+}
 
-        /*
-            확장 스타일 - 마우스 반응 테이블
-        */
-        .table.table-hover > tbody > tr:hover {
-            background-color: #dfe6e9;
-        }
+/*
+    확장 스타일 - 마우스 반응 테이블
+*/
+.table.table-hover > tbody > tr:hover {
+    background-color: #dfe6e9;
+}
 
-        /*
-            확장 스타일 - 줄무늬 테이블
-            두 줄마다 하이라이트가 들어가는 테이블
-        */
-        .table.table-stripe > thead {
-            background-color: #dfe6e9;
-        }
+/*
+    확장 스타일 - 줄무늬 테이블
+*/
+.table.table-stripe > thead {
+    background-color: #dfe6e9;
+}
+.table.table-stripe > tbody > tr:nth-child(2n) {
+    background-color: #dfe6e9;
+}
 
-        .table.table-stripe > tbody > tr:nth-child(2n) {
-            background-color: #dfe6e9;
+/*
+    확장 스타일 - 옆트임 테이블
+*/
+.table.table-slit {
+    border-top: 1px solid #2d3436;
+    border-bottom: 1px solid #2d3436;
+}
+.table.table-slit > thead {
+    border-bottom: 1px solid #2d3436;
+}
+.table.table-slit > tfoot {
+    border-top: 1px solid #2d3436;
+}
 
-        }
+.table.table-slit > tbody > tr :not(tr:last-child) {
+    border-bottom: 1px dotted #2d3436;
+}
 
-        /*
-            확장 스타일 - 옆트임 테이블
-            테이블 가로 테두리만 나오도록 구현
-        */
-        .table.table-slit {
-            border-top: 1px solid #2d3436;
-            border-bottom: 1px solid #2d3436;
-        }
-        .table.table-slit > thead {
-            border-bottom: 1px solid #2d3436;
-        }
-        .table.table-slit > tfoot {
-            border-top: 1px solid #2d3436;
-        }
 
-        .table.table-slit > tbody > tr:not(tr:last-child) {
-            border-bottom: 1px dotted #2d3436;
-        }
-
-        /*
+/*
     페이지 네비게이터 디자인
 */
 .page-navigator > a {
@@ -328,6 +326,8 @@ textarea.form-input.fixed {
 .black { color:#2d3436; }
 .white { color:#FFF; }
 
+
+
 /*
     전체 화면 디자인
 */
@@ -352,6 +352,7 @@ textarea.form-input.fixed {
     [1] margin을 음수로 부여하는 방법(폭을 알 때)
         - 모든 브라우저에서 작동하는 코드
         - 폭을 모를 때는 사용할 수 없다
+
         .backdrop > .modal {
             background-color: white;
             width: 100px;
@@ -372,6 +373,7 @@ textarea.form-input.fixed {
         left:50%;
         transform: translate(-50%, -50%);
     }
+
     [3] flexible layout을 사용하는 방법
     .backdrop {
         display: flex;
@@ -391,198 +393,200 @@ textarea.form-input.fixed {
     transform: translate(-50%, -50%);
 }
 
- /*
-            메뉴는 계층형 구조를 가지는 가장 대표적인 도구
-            list tag를 이용하여 구현(ol, ul, li)
 
-            1차메뉴
-                - 2차메뉴
-                    - 3차메뉴
-                    - 3차메뉴
-                - 2차메뉴
-                    - 3차메뉴
-                    - 3차메뉴
-                    - 3차메뉴
-                - 2차메뉴
-            1차메뉴
-                - 2차메뉴
-                    - 3차메뉴
-                    - 3차메뉴
-                - 2차메뉴
-                    - 3차메뉴
-                    - 3차메뉴
-                    - 3차메뉴
-                - 2차메뉴    
+/*
+    메뉴 디자인
 
-            ul.menu
+    메뉴는 계층형 구조를 가지는 가장 대표적인 도구
+    list tag를 이용하여 구현(ol, ul, li)
+
+    1차메뉴
+        - 2차메뉴
+            - 3차메뉴
+            - 3차메뉴
+        - 2차메뉴
+            - 3차메뉴
+            - 3차메뉴
+            - 3차메뉴
+        - 2차메뉴
+    1차메뉴
+        - 2차메뉴
+            - 3차메뉴
+            - 3차메뉴
+        - 2차메뉴
+            - 3차메뉴
+            - 3차메뉴
+            - 3차메뉴
+        - 2차메뉴    
+
+    ul.menu
+        - li - a
+            - ul
                 - li - a
-                    - ul
-                        - li - a
-                        - li - a
-                        - li - a
                 - li - a
-                    - ul
-                        - li - a
-                        - li - a
-                        - li - a
-        */
+                - li - a
+        - li - a
+            - ul
+                - li - a
+                - li - a
+                - li - a
+*/
 
-        /* 디자인 초기화 */
-        ul.menu, 
-        ul.menu ul
-        {
-            list-style: none;
-            margin: 0px;
-            padding: 0px;
-        }
-        ul.menu a {
-            color: inherit;
-            text-decoration: none;
-        }
+/* 디자인 초기화 */
+ul.menu, 
+ul.menu ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+ul.menu a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        /* 1차 메뉴의 배치를 가로 배치로 변경 */
-        .menu > li {
-            display: inline-block;
-        }
+/* 1차 메뉴의 배치를 가로 배치로 변경 */
+ul.menu > li {
+    display: inline-block;
+}
 
-        /* 색상 변경 및 크기 설정 */
-        .menu,
-        .menu ul
-        {
-            font-size: 24px;
-            background-color: #2d3436;
-        }
-        .menu li {
-            color: white;
-            background-color: #2d3436;
-            width: 150px;
-        }
+/* 색상 변경 및 크기 설정 */
+ul.menu,
+ul.menu ul
+{
+    font-size: 24px;
+    background-color: #2d3436;
+}
+ul.menu li {
+    color: white;
+    background-color: #2d3436;
+    width: 150px;
+}
 
-        /* 메뉴에 마우스가 올라가면 하이라이트 효과 */
-        .menu li:hover {
-            background-color: #636e72;
-        }
+/* 메뉴에 마우스가 올라가면 하이라이트 효과 */
+ul.menu li:hover {
+    background-color: #636e72;
+}
 
-        /* 
-            1차메뉴의 아래쪽에 2차메뉴가 위치하도록 position 변경
-        */
-        .menu li {
-            position: relative; /* 모든 메뉴는 relative로, 앱솔루트를 지정하기 위해 */
-        }
-        .menu ul {
-            position: absolute;
-            z-index: 99999;
-            top: 100%;
-            left: 0;
-        }
+/* 
+    1차메뉴의 아래쪽에 2차메뉴가 위치하도록 position 변경
+*/
+ul.menu li {
+    position: relative;
+}
+ul.menu ul {
+    position: absolute;
+    z-index: 99999;
+    top: 100%;
+    left: 0;
+}
 
-        /*
-            2차 이상의 메뉴를 숨김 처리
-        */
-        ul.menu > li ul {
-            display: none;
-        }
+/*
+    2차 이상의 메뉴를 숨김 처리
+*/
+ul.menu > li ul {
+    display: none;
+}
 
-        /*
-            마우스가 올라간 메뉴 항목의 하위메뉴를 표시
-        */
-        ul.menu li:hover > ul {
-            display: block;
-        }
+/*
+    마우스가 올라간 메뉴 항목의 하위메뉴를 표시
+*/
+ul.menu li:hover > ul {
+    display: block;
+}
 
-        /*
-            a 태그에 말줄임표 처리 구현
-        */
-        ul.menu a {
-            /*
-                overflow로 인해 발생하는 추가 공간을 해결하기 위해 높이 설정
-                - 추가 공간이 생기는 이유는 overflow를 처리하기 위해 내부적으로 생성하는 공간 때문(BFC)
-                - display를 inline-block으로 설정하고 새로 정렬을 지정하면 해결
-                - vertical-align은 어떤 값을 주더라도 문제가 해결된다.
-                - 버그에 가깝다
-            */
-            display: inline-block;
-            vertical-align: top;
-            width:100%;
-            padding: 0.5em;
+/*
+    a 태그에 말줄임표 처리 구현
+*/
+ul.menu a {
+    /*
+        overflow로 인해 발생하는 추가 공간을 해결하기 위해 높이 설정
+        - 추가공간이 생기는 이유는 overflow를 처리하기 위해 내부적으로 생성하는 공간 때문(BFC)
+        - display를 inline-block으로 설정하고 세로 정렬을 지정하면 해결
+        - vertical-align은 어떤 값을 주더라도 문제가 해결된다
+        - 버그에 가깝다
+    */
+    display: inline-block;
+    vertical-align: top;
+    width:100%;
+    padding: 0.5em;
 
-            /* 말줄임표 처리를 위한 디자인(반드시 폭이 있어야 함) */
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-        }
+    /* 말줄임표 처리를 위한 디자인(반드시 폭이 있어야 함) */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; 
+}
 
-        /*
-            overflow로 인해 발생하는 추가 공간을 해결하기 위해 높이 설정
-            1차 메뉴 막대기에 설정할 것
-        */
+/*
+    3차 이상의 메뉴는 하단이 아니라 우측에 나오도록 변경
+*/
+ul.menu > li > ul > li  ul {
+    top:0;
+    left:100%;
+}
 
-        /* ul.menu {
-            height: 2.4em;
-        } */
+/*
+    확장 스타일 : 메뉴를 상단 고정 처리
+*/
+ul.menu.fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+}
 
-        /*
-            3차 이상의 메뉴는 하단이 아니라 우측에 나오도록 변경
-        */
+/*
+    추가 : 메뉴 Flex로 변경
+*/
+ul.menu {
+    display: flex;
+}
+ul.menu > .menu-right {
+    margin-left: auto;
+}
 
-        /* ul.menu > li > ul > li > ul { */
-            ul.menu > li > ul > li ul { 
-                top:0;
-                left:100%;
-        }
+/* 
+    링크 스타일
+    - 방문한 링크는 :visited로 선택 가능
+*/
+a.link, 
+a.link:visited 
+{
+    text-decoration: none;
+    color: #2d3436;
+}
+a.link:hover 
+{
+    color: #0984e3;
+}
 
-        /*
-            확장 스타일 : 메뉴를 상단 고정 처리
-        */
-        ul.menu.fixed {
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-        }
 
-        /* 
-            링크 스타일
-            - 방문한 링크는 visited로 선택 가능
-        */
-        a.link,
-        a.link:visited 
-        {
-            text-decoration: none;
-            color:#2d3436;
-        }
-        a.link:hover {
-            color: #0984e3;
-        }
-        
-         /*
-            float 요소를 배치할 수 있는 전용 공간
-            - ::before 는 공간 시작 지점을 의미하는 가상 선택자
-            - ::after 는 공간 마지막 지점을 의미하는 가상 선택자
-            (없는 곳을 억지로 선택한 것이다)
-        */
-        .float-container::after { /* 세 개가 세트이다. */
-            content: "";
-            display: block; /* width:100%도 가능 */
-            clear: both;
-        }
-        .float-container > .float-left {
-            float: left;
-        }
-        .float-container > .float-right {
-            float: right;
-        }
+/* 
+    float 요소를 배치할 수 있는 전용 공간
+    - ::before 는 공간 시작 지점을 의미하는 가상 선택자
+    - ::after 는 공간 마지막 지점을 의미하는 가상 선택자
+*/
+.float-container::after {
+    content:"";
+    display: block; /* width:100%도 가능 */
+    clear: both;
+}
+.float-container > .float-left {
+    float: left;
+}
+.float-container > .float-right {
+    float: right;
+}
+.float-container > .col-2,
+.float-container > .col-3,
+.float-container > .col-4,
+.float-container > .col-5,
+.float-container > .col-6
+{ 
+    float:left;
+}
 
-        .float-container > .col-2,
-        .float-container > .col-3,
-        .float-container > .col-4,
-        .float-container > .col-5,
-        .float-container > .col-6
-        {
-            float:left;
-        }
-
-        /*
+/*
     flexible 레이아웃 스타일
     - 영역은 display가 flex 이거나 inline-flex 여야 한다
     - 영역에 flex-direction을 설정하면 내용의 정렬 방식을 정할 수 있다
@@ -622,39 +626,79 @@ textarea.form-input.fixed {
     flex-wrap: wrap;
 }
 
- /*
-            이미지 디자인
-        */
-        .image.image-circle {
-            border-radius: 50%;
-        }
-        .image.image-round {
-            border-radius: 4px;
-        }
-        .image.image-border,
-        .image.image-hover:hover {
-            /* border: 3px solid black; */
-            box-shadow: 0 0 0 1px #2d3436;
-        }
 
-        .image.image-blur {
-            opacity: 0.6;
-        }
-        .image.image-blur:hover {
-            opacity: 1;
-        }
-        .image.image-lift {
-            box-shadow: 0 0 2px 1px #2d3436;
-        }
-        .image.image-leaf {
-            border-top-left-radius: 50%;
-            border-bottom-right-radius: 50%;
-        }
-        .image.image-invert {
-            filter: invert(100%);
-        }
-        .image.image-grayscale {
-            filter: grayscale(100%);
-        }
+/*
+    이미지 디자인
+*/
+.image.image-circle {
+    border-radius: 50%;
+}
+.image.image-round {
+    border-radius: 4px;
+}
+.image.image-border,
+.image.image-hover:hover
+{
+    /* border: 1px solid #2d3436; */
+    box-shadow: 0 0 0 1px #2d3436;
+}
 
-    
+.image.image-blur {
+    opacity: 0.6;
+}
+.image.image-blur:hover {
+    opacity: 1;
+}
+.image.image-lift {
+    box-shadow: 0 0 2px 0px #2d3436;
+}
+.image.image-leaf {
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.image.image-invert {
+    filter:invert(100%);
+}
+.image.image-grayscale {
+    filter: grayscale(100%);
+}
+
+/*
+    성공/실패에 대한 스타일 구현
+*/
+.success-feedback {
+    color: #00b894;
+    display: none;
+}
+.fail-feedback,
+.fail2-feedback
+{
+    color: #d63031;
+    display: none;
+}
+.success ~ .success-feedback {
+    display: block;
+}
+.fail ~ .fail-feedback {
+    display: block;
+}
+.fail2 ~ .fail2-feedback {
+    display: block;
+}
+.success {
+    /* important는 우선순위를 최상위로 올린다 */
+    border-color: #00b894 !important;
+    background-image: url("../images/valid.png");
+    background-repeat: no-repeat;
+    background-position: center right 1em;
+    background-size: 1em;
+}
+.fail, 
+.fail2
+{
+    border-color: #d63031 !important;
+    background-image: url("../images/invalid.png");
+    background-repeat: no-repeat;
+    background-position: center right 1em;
+    background-size: 1em;
+}

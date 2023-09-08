@@ -215,4 +215,14 @@ public class BoardController {
 			throw new NoTargetException("존재하지 않는 글번호입니다.");
 		}
 	}
+	
+	//관리자가 이용하는 선택삭제 기능
+	@PostMapping("/deleteByAdmin")
+	public String deleteByAdmin(@RequestParam List<Integer> boardNoList) {
+		for(int boardNo : boardNoList) {
+			boardDao.delete(boardNo);
+		}
+		return "redirect:list";
+		
+	}
 }

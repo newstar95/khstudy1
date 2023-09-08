@@ -94,11 +94,15 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 
                         }
 
                         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                        document.querySelector("[name=memberPost]").value = data.zonecode;
-                        document.querySelector("[name=memberAddr1]").value = addr;
+                        // document.querySelector("[name=memberPost]").value = data.zonecode; //js
+                        $("[name=memberPost]").val(data.zonecode);
+                        
+                        // document.querySelector("[name=memberAddr1]").value = addr; //js
+                        $("[name=memberAddr1]").val(addr);
 
                         // 커서를 상세주소 필드로 이동한다.
-                        document.querySelector("[name=memberAddr2]").focus(); //트리거
+                        // document.querySelector("[name=memberAddr2]").focus(); //트리거 //js
+                        $("[name=memberAddr2]").focus();
                     }
                 }).open();
             });

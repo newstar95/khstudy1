@@ -5,6 +5,7 @@ import java.util.List;
 import com.kh.springhome.dto.MemberBlockDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.dto.MemberListDto;
+import com.kh.springhome.dto.StatDto;
 import com.kh.springhome.vo.PaginationVO;
 
 //메소드 명세만 작성(책으로 치면 목차)
@@ -34,5 +35,8 @@ public interface MemberDao {
 	MemberBlockDto selectBlockOne(String memberId);
 	
 	MemberDto selectOneByMemberNickname(String memberNickname);
+	
+	//통계 기능 추가
+	List<StatDto> selectGroupByMemberLevel();
 	
 }

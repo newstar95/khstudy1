@@ -145,7 +145,7 @@
 <%-- 						[${boardListDto.boardReplycount}] --%>
 							&nbsp;&nbsp;
 							<i class="fa-solid fa-comment blue"></i>
-							${boardListDto.boardReplyCount}							
+							${boardListDto.boardReplycount}							
 						</c:if>
 					</td>
 					<td>${boardListDto.getBoardWriterString()}</td>

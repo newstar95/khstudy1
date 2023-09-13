@@ -308,8 +308,8 @@ $(function(){
 		<h2>${boardDto.boardTitle}</h2>
 	</div>
 	<%-- 게시글 내용(본문) --%>
-	<div class="row left" style="min-height:250px">
-		<pre>${boardDto.boardContent}</pre>
+	<div class="row left" style="min-height:250px; line-height:2;">
+		${boardDto.boardContent}
 	</div>
 	
 	<%-- 댓글과 관련된 화면이 작성될 위치 --%>

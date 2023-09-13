@@ -5,6 +5,12 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<style>
+	.note-viewer {
+		line-height: 2 !important;
+	}
+</style>
+
 <!-- 댓글과 관련된 처리를 할 수 있도록 jQuery 코드 구현 -->
 <script>
 $(function(){
@@ -234,7 +240,7 @@ $(function(){
 			method:"post",
 			data:{boardNo : boardNo},
 			success:function(response){
-				//response는 {"check":true, "count":0} 형태의 json이다
+				//response는 {"check":true, "count":0} 형태의 JSON이다
 				if(response.check) {
 					$(".fa-heart").removeClass("fa-solid fa-regular")
 										.addClass("fa-solid");
@@ -308,7 +314,7 @@ $(function(){
 		<h2>${boardDto.boardTitle}</h2>
 	</div>
 	<%-- 게시글 내용(본문) --%>
-	<div class="row left" style="min-height:250px; line-height:2;">
+	<div class="row left note-viewer" style="min-height:250px">
 		${boardDto.boardContent}
 	</div>
 	

@@ -4,37 +4,38 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-    <style>
-        .note-frame {
-            /* line-height: 1.2em; em을 설정할 때는 fontsize를 설정해야함 */
-            line-height: 2 !important; /* 고유한 크기의 2배 */
+<!-- summernote cdn -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<style>
+    .note-editable {
+        line-height: 2 !important;
+    }
+</style>
 
-        }
-    </style>
-
- <!-- summernote cdn -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<!-- javascript 작성 공간 -->
+<script>
+   $(function () {
+       $('[name=boardContent]').summernote({
+           placeholder: '내용을 작성하세요',
+           tabsize: 2,//탭을 누르면 이동할 간격
+           height: 200,//에디터 높이
+           minHeight:200,//에디터 최소높이
+           toolbar: [
+               ['style', ['style']],
+               ['font', ['bold', 'italic', 'underline']],
+               ['color', ['color']],
+               ['para', ['paragraph']],
+               ['table', ['table']],
+               ['insert', ['link']],
+           ]
+       });
+   });
+</script>
 
 <script src="/js/boardWrite.js"></script>
 <script>
-	$(function () {
-    $('[name=boardContent]').summernote({
-        placeholder: '내용을 작성하세요.',
-        tabsize: 2, //탭을 누르면 이동할 간격
-        height: 120, //에디터 높이
-        minHeight: 200, //에디터 최소 높이
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'italic', 'underline']],
-            ['color', ['color']],
-            ['para', ['paragraph']],
-            ['table', ['table']],
-            ['insert', ['link']],
-        ]
-    });
-});
-
+	
 </script>
 
 <form action="write" method="post" autocomplete="off"
@@ -74,11 +75,15 @@
 			
             <div class="fail-feedback">제목은 필수이며 100자 이내로 작성하세요</div>
         </div>
-            <div class="row left">
-                <label>내용</label>
-                <textarea name="boardContent"></textarea>
-            </div>
-        </div>
+        
+        <div class="row left">
+            <label>
+	            내용
+	            <i class="fa-solid fa-asterisk red"></i>
+            </label>
+            <textarea name="boardContent" class="form-input w-100" 
+            		style="min-height:250px" oninput="checkBoardContent();"
+            			onblur="checkBoardContent();"></textarea>
             <div class="fail-feedback">내용은 반드시 작성해야 합니다</div>
         </div>
         

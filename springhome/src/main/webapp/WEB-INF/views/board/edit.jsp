@@ -2,6 +2,37 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<!-- summernote cdn -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<style>
+    .note-editable {
+        line-height: 2 !important;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<!-- javascript 작성 공간 -->
+<script>
+   $(function () {
+       $('[name=boardContent]').summernote({
+           placeholder: '내용을 작성하세요',
+           tabsize: 2,//탭을 누르면 이동할 간격
+           height: 200,//에디터 높이
+           minHeight:200,//에디터 최소높이
+           toolbar: [
+               ['style', ['style']],
+               ['font', ['bold', 'italic', 'underline']],
+               ['color', ['color']],
+               ['para', ['paragraph']],
+               ['table', ['table']],
+               ['insert', ['link']],
+           ]
+       });
+       $("[name=boardContent]").summernote("fontSize", "20px");
+       $("[name=boardContent]").summernote("lineHeight", "1.5em");
+   });
+</script>
+
 <form action="edit" method="post">
 <input type="hidden" name="boardNo" value="${boardDto.boardNo}">
 

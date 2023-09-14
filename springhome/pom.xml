@@ -72,6 +72,13 @@
 	    <scope>provided</scope>
 	</dependency>
 	
+	<!-- 실제 파일 정보 불러오기 위한 도구 -->
+	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>2.13.0</version>
+	</dependency>
+	
 	
 	</dependencies>
 

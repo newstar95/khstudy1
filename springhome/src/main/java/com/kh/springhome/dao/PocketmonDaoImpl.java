@@ -85,5 +85,14 @@ public class PocketmonDaoImpl implements PocketmonDao {
 		Object[] data = {no};
 		return jdbcTemplate.update(sql, data) > 0;
 	}
+	
+	public boolean update(PocketmonDto pocketmonDto) {
+		String sql = "update pocketmon set name=?, type=? where no=?";
+		Object[] data = {
+				pocketmonDto.getName(), pocketmonDto.getType(),
+				pocketmonDto.getNo()
+		};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
 
 }

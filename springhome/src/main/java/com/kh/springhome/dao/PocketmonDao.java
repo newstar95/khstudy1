@@ -10,7 +10,7 @@ public interface PocketmonDao {
 	void insert(PocketmonDto pocketmonDto);
 	PocketmonDto selectOne(int no);
 	List<PocketmonDto> selectList();
-	
+	boolean delete(int no);
 	
 	void connect(int pocketmonNo, int attachNo);
 	AttachDto findImage(int pocketmonNo);

@@ -129,5 +129,21 @@ public class PocketmonController {
 			model.addAttribute("list", list);
 			return "/WEB-INF/views/pocketmon/list.jsp";
 		}
+		//삭제
+		//- [1] 포켓몬 삭제 [2] 파일정보 삭제 [3] 실제파일 삭제
+		@RequestMapping("/delete")
+		public String delete(@RequestParam int no) {
+			AttachDto attachDto = pocketmonDao.findImage(no);
+			pocketmonDao.delete(no); //포켓몬 + 이미지연결정보 삭제
+			
+			String home = System.getProperty("user.home");
+			File dir = new File(home, "upload");
+			File target = new File(dir, String.valueOf(attachDto.getAttachNo()));
+			target.delete(); //실제파일 삭제
+			
+			attachDao.delete(attachDto.getAttachNo()); //파일정보삭제
+			
+			return "redirect:list";
+		}
 
 }

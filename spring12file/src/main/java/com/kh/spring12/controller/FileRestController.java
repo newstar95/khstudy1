@@ -49,7 +49,7 @@ public class FileRestController {
 	//비동기통신에서는 화면에서 다음 작업이 가능하도록 파일번호 등을 전달
 	@PostMapping("/upload")
 	public Map<String, Object> upload(
-			@RequestParam MultipartFile attach) throws IllegalStateException, IOException {
+		@RequestParam MultipartFile attach) throws IllegalStateException, IOException {
 		//절대규칙 - 파일은 하드디스크에, 정보는 DB에!
 		
 		//[1] 시퀀스 번호를 생성한다

@@ -43,8 +43,17 @@ $(function(){
 	</div>
 	
 	<div class="row mv-30">
-		<img src ="/images/user.png" width="150" height ="150" 
-		class="image image-circle image-border profile-image" >
+		<c:choose>
+			<c:when test= "${profile == null}">
+				<img src ="/images/user.png" width="150" height ="150" 
+				class="image image-circle image-border profile-image" >
+			</c:when>
+			<c:otherwise>
+			<img src ="/rest/member/download?attachNo=${profile}" width="150" height ="150" 
+				class="image image-circle image-border profile-image" >
+			</c:otherwise>
+		</c:choose>
+		
 		<br>
 		<input type="file" class="profile-chooser" accept="image/*">
 		<button class="btn btn-change">변경</button>

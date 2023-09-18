@@ -92,7 +92,7 @@
 
 <div class="container w-600">
     <div class="row">
-        <h1>🧊 회원 가입 🧊</h1>
+        <h1>회원 정보 입력</h1>
     </div>
 
     <!-- 전체 진행단계를 알 수 있는 게이지 출력 -->

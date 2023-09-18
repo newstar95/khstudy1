@@ -50,15 +50,16 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 		//[2] MemberInterceptor를 회원 전용 페이지 처리과정에 간섭할 수 있도록 설정하겠다
 		//- addPathPatterns를 사용하면 추가할 주소를 설정할 수 있다.
 		//- excludePathPatterns를 사용하면 제외할 주소를 설정할 수 있다.
-		registry.addInterceptor(memberInterceptor)
+		registry.addInterceptor(memberInterceptor) //등록한 화면에
 						.addPathPatterns(
 								"/member/**",
 								"/board/**",
 								"/rest/reply/**"
 						)
-						.excludePathPatterns(
+						.excludePathPatterns( //관련된 페이지들을 검사하지 않겠다
 								"/member/join*",
 								"/member/login",
+								"/member/find*",
 								"/member/exitFinish",
 								"/board/list*",
 								"/board/detail",

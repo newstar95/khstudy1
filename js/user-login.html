@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시험</title>
+
+     <!-- 구글 웹 폰트를 사용을 위한 CDN -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+ 
+     <!-- 아이콘 사용을 위한 Font Awesome 6 CDN -->
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+     <!-- 내가 만든 CSS 파일을 불러오는 코드 -->
+     <!-- <link rel="stylesheet" type="text/css" href="./css/reset.css"> -->
+     <link rel="stylesheet" type="text/css" href="./css/commons.css">
+     <!-- <link rel="stylesheet" type="text/css" href="./css/test.css"> -->
+     <style>
+    
+     </style>
+ 
+     <!-- jquery cdn -->
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+ 
+     <!-- Javascript 작성 공간 -->
+     <script>
+
+        $(function(){
+            $(".login-form").submit(function(e) {
+                var id = $("[name=userId]").val();
+                var pw = $("[name=userPw]").val();
+
+                if (id.length == 0 || pw.length == 0) {
+                    alert("모든 항목을 입력해야 전송이 가능합니다.");
+                    e.preventDefault(); 
+                }
+            });
+        });
+        
+     </script>
+</head>
+<body>
+    <form action="#" method="post"  class="login-form">
+
+        <div class="container w-500" style="box-shadow: 0px 0px 15px 0px black;">
+            <div class="container w-400">
+
+                <div class="row mb-40 mt-40" style="padding-top: 1em;">
+                    <h1 >User Login</h1>
+                </div>
+
+                <div class="row mb-30">
+                    <input type="text" name="userId" class="form-input w-100" placeholder="ID">
+                </div>
+
+                <div class="row mb-30">
+                    <input type ="password" name="userPw" class="form-input w-100" placeholder="Password">
+                </div>
+
+            <div class="row flex-container auto-width mb-30">
+                <div class="left">
+                    <input type="radio" name="type" value="normal" checked style="color: black;">
+                    <label>일반</label><br>
+                </div>
+                <div class="right">
+                    <input type="radio" name="type" value="admin">
+                    <label>관리자</label><br>
+                </div>
+            </div>
+            
+            <div class="row mb-30">
+                <button type="submit" class="btn btn-positive w-100">로그인</button>
+            </div>
+
+            <div class="row mb-30">
+                <hr>
+            </div>
+      
+            <div class="row">
+                <button class="btn w-100 mb-50" style="background-color: lightgray; border: none;">회원가입</button>
+            </div>
+
+        </div>
+    </div>
+
+    </form>
+</body>
+</html>

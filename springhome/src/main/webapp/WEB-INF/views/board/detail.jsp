@@ -63,7 +63,7 @@ $(function(){
 		//비동기 통신으로 화면 갱신
 		$.ajax({
 			//url:"http://localhost:8080/rest/reply/list",
-			url:"/rest/reply/list",
+			url:window.contextPath+"/rest/reply/list",
 			method:"post",
 			data:{ replyOrigin : no },
 			success:function(response){

@@ -19,7 +19,7 @@ $(function(){
 		form.append("attach", input.files[0]);
 		
 		$.ajax({
-			url:"/rest/member/upload",
+			url:window.contextPath+"/rest/member/upload",
 			method:"post",
 			processData:false, //ajax가 기본으로 설정하는 걸 막아줌
 			contentType:false, //ajax가 기본으로 설정하는 걸 막아줌
@@ -43,7 +43,7 @@ $(function(){
 		
 		//삭제요청
 		$.ajax({
-			url:"/rest/member/delete",
+			url:window.contextPath+"/rest/member/delete",
 			method:"post",
 			success:function(response){
 				$(".profile-image").attr("src","/images/user.png");

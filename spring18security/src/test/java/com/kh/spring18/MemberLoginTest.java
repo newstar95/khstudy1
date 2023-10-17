@@ -27,5 +27,7 @@ public class MemberLoginTest {
 		log.debug("target = {}", target);
 		
 		assertNotNull(target); //target이 not null이면 테스트 성공
+//		Assertions	.assertNotNull(target); //원래 이 방식인데 위처럼 메소드를 import 하는 것이다.
+		//test라는 특수환경에서는 계속해서 클래스를 적고 부르기가 힘드니까... (test에서만 가능 main에서는 아예 안 뜸)
 	}
 }

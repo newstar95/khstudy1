@@ -33,7 +33,14 @@ public class Test04 {
 		helper.setTo("wkdtoquf3@naver.com");; //받는 사람 설정
 		helper.setSubject("제목");
 //		helper.setText("<h1>Hello</h1>", false);
-		helper.setText("<h1>Hello</h1>", true);
+//		helper.setText("<h1>Hello</h1>", true);
+		
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("<div style='padding:20px; box-shadow:0 0 2px 2px black;'>");
+		buffer.append("<h1 style='color:lightblue;'>제목 테스트</h1>");
+		buffer.append("<p>내용 테스트</p>");
+		buffer.append("</div>");
+		helper.setText(buffer.toString(), true);
 		
 		//[4] 전송
 		sender.send(message);

@@ -7,7 +7,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -86,6 +88,32 @@ public class HomeController {
 			cookie.setMaxAge(0);
 			//사용자에게 보내줌
 			response.addCookie(cookie);
+			return "redirect:/";
+		}
+		
+		@PostMapping("/login")
+		public String login(
+					HttpServletResponse response,
+					@RequestParam String memberId,
+					@RequestParam String memberPw,
+					@RequestParam(required = false) String remember //미체크시 null
+//					@RequestParam(required = "N") String remember //미체크시 N
+					) {
+			//쿠키 생성 조건 - 로그인 성공 후 아이디 저장하기를 체크한 경우
+			//쿠키 삭제 조건 - 로그인 성공 후 아이디 저장하기를 체크하지 않은 경우
+			
+			//if(로그인 성공 시){
+				if(remember != null) { //아이디 저장하기를 체크했다면
+					Cookie cookie = new Cookie("saveId", memberId);
+					cookie.setMaxAge(4*7*24*60*60); //4주
+					response.addCookie(cookie); //쿠키 발행
+				} 
+				else { //아이디 저장하기를 체크하지 않았다면
+					Cookie cookie = new Cookie("saveId", memberId);
+					cookie.setMaxAge(0); //발행 즉시 삭제
+					response.addCookie(cookie); //쿠키 발행
+				}
+			//}
 			return "redirect:/";
 		}
 }

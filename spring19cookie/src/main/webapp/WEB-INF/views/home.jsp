@@ -23,7 +23,7 @@
 <h3><a href="delete">그냥 보기</a></h3>
 
 <%-- saveId란 이름으로 아이디가 저장된 쿠키가 있을 경우 로그인 화면 --%>
-<form action="" method="post">
+<form action="login" method="post">
 	<input type="text" name="memberId" value="${cookie.saveId.value}">
 	<br><br>
 	<input type="password" name="memberPw">
@@ -34,10 +34,10 @@
 	--%>
 	<c:choose>
 		<c:when test = "${cookie.saveId != null}">
-			<input type="checkbox" name="remember"  checked> 아이디 저장하기
+			<input type="checkbox" name="remember"  checked value="ok"> 아이디 저장하기
 		</c:when>
 		<c:otherwise>
-			<input type="checkbox" name="remember" > 아이디 저장하기
+			<input type="checkbox" name="remember"  value="ok"> 아이디 저장하기
 		</c:otherwise>
 	</c:choose>
 	<br><br>

@@ -12,9 +12,15 @@
 <h2>popup 쿠키 있나요? - ${cookie.popup != null}</h2>
 
 <%-- 쿠키가 있을 때만 나오는 화면 구현 --%>
-<c:if test="${cookie.popup != null}">
+<c:if test="${cookie.popup == null}">
 	<h2>팝업화면</h2>
 </c:if>
+
+<h3><a href="create1">평생 안 보기</a></h3>
+<h3><a href="create2">일주일 안 보기</a></h3>
+<h3><a href="create3">하루 안 보기</a></h3>
+<h3><a href="create4">오늘 안 보기</a></h3>
+<h3><a href="delete">그냥 보기</a></h3>
 
 <%-- saveId란 이름으로 아이디가 저장된 쿠키가 있을 경우 로그인 화면 --%>
 <form action="" method="post">

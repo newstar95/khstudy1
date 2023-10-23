@@ -23,12 +23,17 @@ public class SockJsWebSocketServer extends TextWebSocketHandler{
 	
 	 //동기화 처리가 되어있어 조금 느리지만 사용자가 동시다발적으로 나가거나 들어오는 상황에서 유리.
 //	private Set<WebSocketSession> clients = new CopyOnWriteArraySet<>();
-	private Set<ClientVO> clients = new CopyOnWriteArraySet<>(); //순서를 기억해주고 싶다면 리스트로 바꿔야 함
+	private Set<ClientVO> clients = new CopyOnWriteArraySet<>(); //순서를 기억해주고 싶다면 리스트로 바꿔야 함 //전체회원
+	private Set<ClientVO> members = new CopyOnWriteArraySet<>(); //로그인한 회원
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		ClientVO client = new ClientVO(session);
 		clients.add(client);
+		
+		if(client.isMember()) { //회원이라면
+			members.add(client);
+		}
 		log.debug("접속한 사용자 = {}", client);
 		log.debug("사용자 접속! 현재 {}명", clients.size());
 		
@@ -39,6 +44,10 @@ public class SockJsWebSocketServer extends TextWebSocketHandler{
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		ClientVO client = new ClientVO(session);
 		clients.remove(client);
+		
+		if(client.isMember()) { //회원이라면
+			members.remove(client);
+		}
 		log.debug("사용자 접속! 현재 {}명", clients.size());
 		
 		//클라이언트가 여러 개가 있을 때 어떻게 처리하나?(아이디가 같다고 해서 같은 애가 아님)
@@ -53,13 +62,37 @@ public class SockJsWebSocketServer extends TextWebSocketHandler{
 		ObjectMapper mapper = new ObjectMapper();
 		
 		Map<String, Object> data = new HashMap<>();
-		data.put("clients", clients);
+//		data.put("clients", clients); //전체회원명단 (null)이 문제가 됨
+		data.put("clients", members); //로그인한 회원 명단
 		String clientJson = mapper.writeValueAsString(data);
 		
 		//2. 모든 사용자에게 전송
 		TextMessage message = new TextMessage(clientJson);
 		for (ClientVO client : clients) {
 			client.send(message);
+		}
+	}
+	
+	@Override
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		// 사용자가 보낸 메세지를 모두에게 broadcast
+		ClientVO client = new ClientVO(session);
+		if(client.isMember() == false) return;
+		
+		//정보를 Map에 담아서 변환 후 전송
+		Map<String, Object> map = new HashMap<>();
+		map.put("memberId", client.getMemberId());
+		map.put("memberLevel", client.getMemberLevel());
+		map.put("content", message.getPayload());
+		
+		//시간 추가 등 가능
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String messageJson = mapper.writeValueAsString(map); //json  변환
+		TextMessage tm = new TextMessage(messageJson); //전송 가능한 텍스트 형태의 메세지로
+		
+		for(ClientVO c : clients) {
+			c.send(tm); //메세지를 보냄
 		}
 	}
 }

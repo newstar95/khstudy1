@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <h1>결제 상세 내역</h1>
-
+	<c:if test = "${vo.status != 'CANCEL_PAYMENT'}">
+	<a href="cancel?tid=${vo.tid}&cancelAmount=${vo.cancelAvailableAmount.total}">취소</a>
+	</c:if>
 <ul>
 	<li>거래번호 = ${vo.tid}</li>
 	<li>결제상태 = ${vo.status}</li>
@@ -46,4 +48,27 @@
 		<fmt:formatNumber value="${vo.amount.total - vo.amount.vat}" pattern="#,##0"/> 
 		원
 	</li>
+	
+		<c:if test="${vo.selectedCardInfo != null}">
+	<li>
+		카드정보
+		<ul>
+			<li>카드번호 = ${vo.selectedCardInfo.cardBin}</li>
+			<li>할부개월수 = ${vo.selectedCardInfo.installMonth}</li>
+			<li>카드사명 = ${vo.selectedCardInfo.cardCorpName}</li>
+			<li>무이자할부 = ${vo.selectedCardInfo.interestFreeInstall}</li>
+		</ul>
+	</li>
+	</c:if>
 </ul>
+
+<hr>
+
+<h1>결제 진행내역</h1>
+
+<ul>
+<c:forEach var="paymentActionDetailVO" items="${vo.paymentActionDetails}">
+	<li>${paymentActionDetailVO}</li>
+</c:forEach>
+</ul>
+

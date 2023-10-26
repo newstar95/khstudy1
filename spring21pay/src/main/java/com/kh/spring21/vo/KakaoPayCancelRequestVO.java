@@ -1,4 +1,4 @@
-package com.kh.spring21.service;
+package com.kh.spring21.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;

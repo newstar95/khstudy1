@@ -1,4 +1,4 @@
-package com.kh.spring21.service;
+package com.kh.spring21.vo;
 
 import java.sql.Date;
 

@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.kh.spring21.service.KakaoPayCancelRequestVO;
-import com.kh.spring21.service.KakaoPayCancelResponseVO;
 import com.kh.spring21.service.KakaoPayService;
+import com.kh.spring21.vo.KakaoPayCancelRequestVO;
+import com.kh.spring21.vo.KakaoPayCancelResponseVO;
 
 import lombok.extern.slf4j.Slf4j;
 

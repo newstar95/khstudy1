@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring21.dao.PaymentDao;
 import com.kh.spring21.dao.ProductDao;
+import com.kh.spring21.error.NoTargetException;
 import com.kh.spring21.dto.PaymentDetailDto;
 import com.kh.spring21.dto.PaymentDto;
 import com.kh.spring21.dto.ProductDto;
@@ -59,12 +60,7 @@ public class KakaoPayController {
 		request.setPartnerOrderId(UUID.randomUUID().toString());
 		KakaoPayReadyResponseVO response = kakaoPayService.ready(request);
 		//session에 flash value를 저장(잠시 쓰고 지우는 데이터)
-		//- 사용자를 거치지 않는 범위 내에서 사용해야 안전하게 쓸 수 있다.
-		
-		//하나하나 넣기
-//		session.setAttribute("partnerOrderId", request.getPartnerOrderId());
-//		session.setAttribute("partnerUserId",request.getPartnerUserId());s
-//		session.setAttribute("tid", response.getTid());
+		//- 사용자를 거치지 않는 범위 내에서 사용해야 안전하게 쓸 수 있다
 		session.setAttribute("approve", KakaoPayApproveRequestVO.builder()
 					.partnerOrderId(request.getPartnerOrderId())
 					.partnerUserId(request.getPartnerUserId())
@@ -173,7 +169,7 @@ public class KakaoPayController {
 					.paymentTid(response.getTid())
 					.paymentName(response.getItemName())
 					.paymentPrice(response.getAmount().getTotal())
-					.paymentRemain(response.getAmount().getTotal()) //상품 번호 지우고 remain 추가
+					.paymentRemain(response.getAmount().getTotal())
 				.build());
 		
 		return "redirect:successResult";
@@ -184,7 +180,7 @@ public class KakaoPayController {
 		return "pay2/successResult";
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping("/test3")
 	public String test3(Model model) {
@@ -192,22 +188,22 @@ public class KakaoPayController {
 		return "pay3/home";
 	}
 	
-	//결제 확인 화면
+	//결제 확인화면
 	@GetMapping("/test3/purchase")
 	public String test3Purchase(@ModelAttribute PurchaseListVO listVO, Model model) {
 		List<PurchaseVO> purchaseList = listVO.getProduct();
 		
-		List<PurchaseConfirmVO> confirmList = new ArrayList<>(); //옮겨 담을 리스트
+		List<PurchaseConfirmVO> confirmList = new ArrayList<>();//옮겨담을 리스트
 		int total = 0;
-		for(PurchaseVO vo : purchaseList) { //사용자가 선택한 번호와 수량의 목록을 반복하며
-			ProductDto productDto = productDao.selectOne(vo.getProductNo()); //상품정보를 구한다.
+		for(PurchaseVO vo : purchaseList) {//사용자가 선택한 번호와 수량의 목록을 반복하며
+			ProductDto productDto = productDao.selectOne(vo.getProductNo());//상품정보를 구한다
 			
 			//vo와 dto를 신규객체로 만들어 추가
-			PurchaseConfirmVO confirmVO = PurchaseConfirmVO.builder() //vo와 dto를 신규객체로 만들어 추가
+			PurchaseConfirmVO confirmVO = PurchaseConfirmVO.builder()
 					.purchaseVO(vo).productDto(productDto)
-					.build();
-			confirmList.add(confirmVO); //화면에 출력할 데이터 추가
-			total += confirmVO.getTotal(); //총 구매금액 합산
+				.build();
+			confirmList.add(confirmVO);//화면에 출력할 데이터 추가
+			total += confirmVO.getTotal();//총 구매금액 합산
 		}
 		
 		model.addAttribute("list", confirmList);
@@ -217,15 +213,19 @@ public class KakaoPayController {
 	
 	//결제 처리
 	@PostMapping("/test3/purchase")
-	public String test3Purchase(@ModelAttribute PurchaseListVO listVO, HttpSession session) throws URISyntaxException {
-//		log.debug("listVO = {}", listVO);
+	public String test3Purchse(HttpSession session, 
+			@ModelAttribute PurchaseListVO listVO) throws URISyntaxException {
+		log.debug("listVO = {}", listVO);
 		
 		//listVO에 들어있는 product 항목들을 이용해서 결제 준비 요청 처리 후 결제 페이지로 안내
-		//- 결제이름은 대표 상품명 외 ?개와 같이 작성 
-		//- 결제 금액은 모든 상품의 가격과 수량의 총합계
-		//- 결론적으로 만들어야 하는 데이터는 KakaoPayRequestVO
+		//- 결제이름은 대표 상품명 외 ?개 와 같이 작성
+		//- 결제금액은 모든 상품의 가격과 수량의 총합계
+		//- 결론적으로 만들어야 하는 데이터는 KakaoPayReadyRequestVO
 		KakaoPayReadyRequestVO request = kakaoPayService.convert(listVO);
-		request.setPartnerUserId("testuser1");
+		
+		String memberId = (String)session.getAttribute("name");
+		request.setPartnerUserId(memberId);
+		
 		KakaoPayReadyResponseVO response = kakaoPayService.ready(request);
 		
 		//session에 flash value를 저장(잠시 쓰고 지우는 데이터)
@@ -234,31 +234,32 @@ public class KakaoPayController {
 					.partnerOrderId(request.getPartnerOrderId())
 					.partnerUserId(request.getPartnerUserId())
 					.tid(response.getTid())
-				.build()); //승인요청을 위한 준비 데이터
-		session.setAttribute("listVO", listVO); //구매한 상품의 번호와 수량 목록
-		
+				.build());//승인요청을 위한 준비데이터 --> 카카오페이
+		session.setAttribute("listVO", listVO);//구매한 상품의 번호와 수량 목록 --> 우리 DB
 		
 		return "redirect:" + response.getNextRedirectPcUrl();
 	}
 	
 	@GetMapping("/test3/purchase/success")
-	public String test3Success(@RequestParam String pg_token, HttpSession session) throws URISyntaxException {
+	public String test3Success(HttpSession session, @RequestParam String pg_token) throws URISyntaxException {
 		//session에 저장한 flash value 추출 및 삭제
-		KakaoPayApproveRequestVO request =
+		KakaoPayApproveRequestVO request = 
 				(KakaoPayApproveRequestVO)session.getAttribute("approve");
 		PurchaseListVO listVO = (PurchaseListVO) session.getAttribute("listVO");
 		
 		session.removeAttribute("approve");
 		session.removeAttribute("listVO");
 		
-		request.setPgToken(pg_token); //토큰 설정
-		KakaoPayApproveResponseVO response = kakaoPayService.approve(request); //승인 요청
+		request.setPgToken(pg_token);//토큰 설정
+		KakaoPayApproveResponseVO response = kakaoPayService.approve(request);//승인요청
 		
-		//DB 작업
+		//DB작업
 		//- 상품을 3개 구매했다면 payment 1회, payment_detail 3회의 insert가 필요(N+1)
-
+		
 		//[1] 결제번호 생성
-		int paymentNo = paymentDao.sequence();
+		//int paymentNo = paymentDao.sequence();
+		int paymentNo = Integer.parseInt(response.getPartnerOrderId());
+		
 		//[2] 결제정보 등록
 		paymentDao.insert(PaymentDto.builder()
 					.paymentNo(paymentNo)//결제고유번호
@@ -281,7 +282,6 @@ public class KakaoPayController {
 					.build());
 		}
 		
-		
 		return "redirect:successResult";
 	}
 	
@@ -297,8 +297,11 @@ public class KakaoPayController {
 	}
 	
 	@RequestMapping("/test3/list2")
-	public String test3list2(Model model) {
-		model.addAttribute("list", paymentDao.selectTotalList());
+	public String test3list2(HttpSession session, Model model) {
+		String memberId = (String)session.getAttribute("name");
+		
+		//model.addAttribute("list", paymentDao.selectTotalList());//전체내역
+		model.addAttribute("list", paymentDao.selectTotalListByMember(memberId));//나의내역
 		return "pay3/list2";
 	}
 	
@@ -312,6 +315,11 @@ public class KakaoPayController {
 	@RequestMapping("/test3/cancel")
 	public String test3cancel(@RequestParam int paymentDetailNo) throws URISyntaxException {
 		PaymentDetailDto paymentDetailDto = paymentDao.selectDetail(paymentDetailNo);//1
+		//if(paymentDetailDto.getPaymentDetailStatus().equals("취소")) {
+		if(paymentDetailDto == null || paymentDetailDto.isCanceled()) {
+			throw new NoTargetException();
+		}
+		
 		PaymentDto paymentDto = 
 				paymentDao.selectOne(paymentDetailDto.getPaymentDetailOrigin());//2
 		
@@ -335,6 +343,52 @@ public class KakaoPayController {
 				.build());
 		
 		return "redirect:list2";
+	}
+	
+	//결제 그룹 전체 취소
+	//[1] 전달받은 paymentNo로 PaymentDto를 조회
+	// - 잔여금액이 0이라면 차단
+	//[2] 1번에서 거래번호(tid)와 잔여금액을 꺼내서 카카오페이에 취소 요청을 전송
+	//[3] 취소가 성공하였다면 DB에서 다음의 항목을 수정
+	// - payment에서 잔여금액을 0으로 변경
+	// - payment_detail에서 해당 payment_no에 대한 모든 상태를 취소로 변경
+	@RequestMapping("/test3/cancelAll")
+	public String test3cancelAll(@RequestParam int paymentNo) throws URISyntaxException {
+		//1
+		PaymentDto paymentDto = paymentDao.selectOne(paymentNo);
+		if(paymentDto == null || paymentDto.getPaymentRemain() == 0) {
+			throw new NoTargetException("이미 취소된 결제입니다");
+		}
+		
+		//2
+		KakaoPayCancelRequestVO request = KakaoPayCancelRequestVO.builder()
+					.tid(paymentDto.getPaymentTid())//거래번호
+					.cancelAmount(paymentDto.getPaymentRemain())//잔여금액
+				.build();
+		KakaoPayCancelResponseVO response = kakaoPayService.cancel(request);
+		
+		//3
+		paymentDao.cancel(PaymentDto.builder()
+					.paymentNo(paymentNo).paymentRemain(0)
+				.build());
+		paymentDao.cancelDetailGroup(paymentNo);
+		
+		return "redirect:list2";
+	}
+	
+	//결제취소와 결제실패의 경우에도 세션에 저장한 flash value를 삭제해야 한다
+	@RequestMapping("/test3/purchase/cancel")
+	public String test3cancel(HttpSession session) {
+		session.removeAttribute("approve");
+		session.removeAttribute("listVO");
+		return "취소했을때 보여줄 페이지";
+	}
+	
+	@RequestMapping("/test3/purchase/fail")
+	public String test3fail(HttpSession session) {
+		session.removeAttribute("approve");
+		session.removeAttribute("listVO");
+		return "실패했을때 보여줄 페이지";
 	}
 	
 }

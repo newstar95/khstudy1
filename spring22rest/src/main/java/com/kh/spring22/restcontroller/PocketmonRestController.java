@@ -3,8 +3,13 @@ package com.kh.spring22.restcontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +34,26 @@ public class PocketmonRestController {
 	@GetMapping("/")
 	public List<PocketmonDto> list() {
 		return pocketmonDao.selectList();
+	}
+	
+	@PostMapping("/")
+//	public void insert(@ModelAttribute PocketmonDto pocketmonDto) { //form-data 수신용
+	public void insert(@RequestBody PocketmonDto pocketmonDto) { //request body 직접 해석(ex:), spring 거를 import
+		pocketmonDao.insert(pocketmonDto);
+	}
+	
+	//파라미터는 주소가 매우 지저분해지므로 최대한 경로변수를 활용
+	@DeleteMapping("/{no}")
+//	public boolean delete(@PathVariable int no) { //데이터를 반환하면 상태설정이 불가능(우리는 상태설정이 필요)
+	public ResponseEntity<String> delete(@PathVariable int no) { //상태 설정이 가능한 객체를 반환( 데이터<응답객체> )
+		boolean result = pocketmonDao.delete(no);
+		if(result) {
+//			return ResponseEntity.ok().build(); //메세지
+			return ResponseEntity.status(200).build(); //숫자
+			}
+		else {
+//			return ResponseEntity.notFound().build(); //메세지
+			return ResponseEntity.status(404).build(); //숫자
+		}
 	}
 }

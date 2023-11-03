@@ -18,4 +18,14 @@ public class PocketmonDaoImpl implements PocketmonDao{
 		return sqlSession.selectList("pocketmon.list");
 	}
 
+	@Override
+	public void insert(PocketmonDto pocketmonDto) {
+		sqlSession.insert("pocketmon.save", pocketmonDto);
+	}
+
+	@Override
+	public boolean delete(int no) {
+		return sqlSession.delete("pocketmon.remove", no) > 0; //이 구문에 no를 줄테니 결과가 0보다 큰지를 판단해서 반환해라
+	}
+
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,7 +54,27 @@ public class PocketmonRestController {
 			}
 		else {
 //			return ResponseEntity.notFound().build(); //메세지
-			return ResponseEntity.status(404).build(); //숫자
+			return ResponseEntity.notFound().build(); //숫자
 		}
+	}
+	
+	@GetMapping("/{no}")
+	public ResponseEntity<PocketmonDto> find(@PathVariable int no) {
+		PocketmonDto pocketmonDto = pocketmonDao.selectOne(no);
+		
+		if(pocketmonDto != null) {
+			return ResponseEntity.ok(pocketmonDto);
+		}
+		else {
+			return ResponseEntity.notFound().build(); 
+		}
+	}
+	
+	@PutMapping("/{no}") //원래 번호
+	//ResponseEntity에는 꼭 String을 적어야하는 것이 아니고 주고 싶은 형태로 써도 됨, 없으면 Void를 쓰기도 함
+	public ResponseEntity<String> edit(
+				@PathVariable int no, @RequestBody PocketmonDto pocketmonDto) { 
+		boolean result = pocketmonDao.edit(no, pocketmonDto);
+		return result ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
 	}
 }

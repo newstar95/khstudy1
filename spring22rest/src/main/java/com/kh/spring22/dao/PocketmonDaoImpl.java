@@ -1,6 +1,8 @@
 package com.kh.spring22.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,19 @@ public class PocketmonDaoImpl implements PocketmonDao{
 	@Override
 	public boolean delete(int no) {
 		return sqlSession.delete("pocketmon.remove", no) > 0; //이 구문에 no를 줄테니 결과가 0보다 큰지를 판단해서 반환해라
+	}
+
+	@Override
+	public PocketmonDto selectOne(int no) {
+		return sqlSession.selectOne("pocketmon.find",no);
+	}
+
+	@Override
+	public boolean edit(int no, PocketmonDto pocketmonDto) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("no", no); //origin no
+		params.put("dto", pocketmonDto);
+		return sqlSession.update("pocketmon.edit", params) > 0;
 	}
 
 }
